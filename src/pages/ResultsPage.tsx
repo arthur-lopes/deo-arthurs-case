@@ -30,8 +30,8 @@ const ResultsPage = () => {
                 <BarChart2 className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Centro de Resultados</h1>
-                <p className="text-blue-100">Visualize e analise seus dados processados</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Results Center</h1>
+                <p className="text-blue-100">Visualize and analyze your processed data</p>
               </div>
             </div>
           </div>
@@ -41,16 +41,16 @@ const ResultsPage = () => {
           <div className="w-20 h-20 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl flex items-center justify-center mx-auto mb-6">
             <AlertTriangle className="h-10 w-10 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-3">Nenhum dado processado</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">No data processed</h2>
           <p className="text-gray-600 text-lg mb-8 max-w-md mx-auto">
-            Você precisa carregar um arquivo CSV para visualizar os resultados e análises.
+            You need to upload a CSV file to view results and analytics.
           </p>
           <button
             onClick={() => navigate('/upload')}
             className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <FileUp className="mr-3 h-6 w-6" />
-            Processar Arquivo CSV
+            Process CSV File
           </button>
         </div>
       </div>
@@ -68,15 +68,15 @@ const ResultsPage = () => {
               <BarChart2 className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Resultados do Processamento</h1>
-              <p className="text-blue-100">Dados enriquecidos e prontos para uso</p>
+              <h1 className="text-3xl md:text-4xl font-bold">Processing Results</h1>
+              <p className="text-blue-100">Enriched data ready to use</p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-200 text-sm font-medium">Leads Processados</p>
+                  <p className="text-blue-200 text-sm font-medium">Leads Processed</p>
                   <p className="text-2xl font-bold text-white">{leads.length}</p>
                 </div>
                 <Users className="h-8 w-8 text-blue-200" />
@@ -85,7 +85,7 @@ const ResultsPage = () => {
             <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-blue-200 text-sm font-medium">Arquivo</p>
+                  <p className="text-blue-200 text-sm font-medium">File</p>
                   <p className="text-lg font-bold text-white truncate">{fileName || 'leads.csv'}</p>
                 </div>
                 <Download className="h-8 w-8 text-blue-200" />
@@ -95,7 +95,7 @@ const ResultsPage = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-blue-200 text-sm font-medium">Status</p>
-                  <p className="text-lg font-bold text-white">Concluído</p>
+                  <p className="text-lg font-bold text-white">Completed</p>
                 </div>
                 <Sparkles className="h-8 w-8 text-blue-200" />
               </div>
@@ -121,8 +121,8 @@ const ResultsPage = () => {
             <TrendingUp className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Comparação: Antes vs Depois</h2>
-            <p className="text-gray-600">Veja as melhorias aplicadas aos seus dados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Comparison: Before vs After</h2>
+            <p className="text-gray-600">See the improvements applied to your data</p>
           </div>
         </div>
         <BeforeAfterComparison originalLeads={originalLeads} processedLeads={leads} />
@@ -136,19 +136,19 @@ const ResultsPage = () => {
               <Target className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Dados Enriquecidos</h2>
-              <p className="text-green-600">Prontos para download e uso</p>
+              <h2 className="text-2xl font-bold text-gray-900">Enriched Data</h2>
+              <p className="text-green-600">Ready for download and use</p>
             </div>
           </div>
           <div className="flex items-center space-x-4">
             <div className="bg-gray-50 px-4 py-2 rounded-2xl">
-              <p className="text-sm text-gray-500">Campos Adicionados</p>
-              <p className="font-bold text-gray-900">Especialidade, Grau</p>
+              <p className="text-sm text-gray-500">Fields Added</p>
+              <p className="font-bold text-gray-900">Specialty, Seniority</p>
             </div>
           </div>
         </div>
 
-        <DataTable data={leads} fileName={fileName?.replace('.csv', '_enriquecido.csv') || 'leads_enriquecido.csv'} />
+        <DataTable data={leads} fileName={fileName?.replace('.csv', '_enriched.csv') || 'leads_enriched.csv'} />
       </div>
 
       {/* Next Steps */}
@@ -158,8 +158,8 @@ const ResultsPage = () => {
             <ArrowRight className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Próximos Passos</h2>
-            <p className="text-green-600">Maximize o valor dos seus dados enriquecidos</p>
+            <h2 className="text-2xl font-bold text-gray-900">Next Steps</h2>
+            <p className="text-green-600">Maximize the value of your enriched data</p>
           </div>
         </div>
         
@@ -167,24 +167,24 @@ const ResultsPage = () => {
           {[
             {
               step: '1',
-              title: 'Importar para CRM',
-              description: 'Utilize o arquivo CSV baixado para importar os leads enriquecidos para o HubSpot ou outro CRM',
+              title: 'Import to CRM',
+              description: 'Use the downloaded CSV file to import enriched leads to HubSpot or other CRM',
               icon: Download,
               color: 'from-blue-500 to-blue-600',
               link: null
             },
             {
               step: '2',
-              title: 'Segmentar Campanhas',
-              description: 'Use os campos de especialidade e grau para criar segmentações mais precisas',
+              title: 'Segment Campaigns',
+              description: 'Use specialty and seniority fields to create more precise segmentations',
               icon: Target,
               color: 'from-purple-500 to-purple-600',
               link: null
             },
             {
               step: '3',
-              title: 'Tutorial HubSpot',
-              description: 'Aprenda a criar datasets no HubSpot com os dados enriquecidos',
+              title: 'HubSpot Tutorial',
+              description: 'Learn how to create datasets in HubSpot with enriched data',
               icon: TrendingUp,
               color: 'from-green-500 to-green-600',
               link: '/tutorial'
@@ -208,7 +208,7 @@ const ResultsPage = () => {
                     onClick={() => navigate(step.link)}
                     className="inline-flex items-center text-green-600 font-semibold hover:text-green-700 transition-colors"
                   >
-                    Acessar Tutorial
+                    Access Tutorial
                     <ArrowRight className="h-4 w-4 ml-1" />
                   </button>
                 )}

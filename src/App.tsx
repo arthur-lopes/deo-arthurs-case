@@ -13,6 +13,8 @@ import EmailEnrichmentPage from './pages/EmailEnrichmentPage';
 import ResultsPage from './pages/ResultsPage';
 import TutorialPage from './pages/TutorialPage';
 import CoursePage from './pages/CoursePage';
+import ApiDocumentationPage from './pages/ApiDocumentationPage';
+import HubSpotIntegrationPage from './pages/HubSpotIntegrationPage';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
                         <Route path="/results" element={<ResultsPage />} />
                         <Route path="/tutorial" element={<TutorialPage />} />
                         <Route path="/course" element={<CoursePage />} />
+                        <Route path="/api-documentation" element={<ApiDocumentationPage />} />
+                        <Route path="/hubspot-integration" element={<HubSpotIntegrationPage />} />
                       </Routes>
                     </Layout>
                   </ProtectedRoute>

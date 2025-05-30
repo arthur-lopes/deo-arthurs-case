@@ -27,12 +27,12 @@ const EmailEnrichmentPage = () => {
               <Mail className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Enriquecer Email</h1>
-              <p className="text-purple-100">Perfil profissional completo em segundos</p>
+              <h1 className="text-3xl md:text-4xl font-bold">Email Enrichment</h1>
+              <p className="text-purple-100">Complete professional profile in seconds</p>
             </div>
           </div>
           <p className="text-xl md:text-2xl text-purple-100 max-w-3xl leading-relaxed">
-            Transforme qualquer email em um perfil profissional detalhado com histórico, empresa atual e dados sociais.
+            Transform any email into a detailed professional profile with history, current company and social data.
           </p>
         </div>
       </div>
@@ -42,20 +42,20 @@ const EmailEnrichmentPage = () => {
         {[
           {
             icon: User,
-            title: 'Perfil Detalhado',
-            description: 'Nome, cargo, senioridade e especialização profissional',
+            title: 'Detailed Profile',
+            description: 'Name, position, seniority and professional specialization',
             color: 'from-blue-500 to-blue-600'
           },
           {
             icon: Building2,
-            title: 'Dados Empresariais',
-            description: 'Empresa atual, setor, localização e informações corporativas',
+            title: 'Company Data',
+            description: 'Current company, industry, location and corporate information',
             color: 'from-green-500 to-green-600'
           },
           {
             icon: Target,
-            title: 'Histórico Completo',
-            description: 'Experiência profissional e presença em redes sociais',
+            title: 'Complete History',
+            description: 'Professional experience and social media presence',
             color: 'from-purple-500 to-purple-600'
           }
         ].map((feature, index) => {
@@ -79,8 +79,8 @@ const EmailEnrichmentPage = () => {
             <Sparkles className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Como Funciona</h2>
-            <p className="text-gray-600">Processo automático em 3 etapas</p>
+            <h2 className="text-2xl font-bold text-gray-900">How It Works</h2>
+            <p className="text-gray-600">Automatic process in 3 steps</p>
           </div>
         </div>
         
@@ -88,22 +88,22 @@ const EmailEnrichmentPage = () => {
           {[
             {
               step: '1',
-              title: 'Digite o Email',
-              description: 'Insira o endereço de email que deseja enriquecer',
+              title: 'Enter Email',
+              description: 'Input the email address you want to enrich',
               icon: Mail,
               color: 'from-blue-500 to-blue-600'
             },
             {
               step: '2',
-              title: 'IA Busca Dados',
-              description: 'Sistema encontra informações profissionais e empresariais',
+              title: 'AI Searches Data',
+              description: 'System finds professional and business information',
               icon: Zap,
               color: 'from-yellow-500 to-orange-500'
             },
             {
               step: '3',
-              title: 'Perfil Completo',
-              description: 'Receba nome, cargo, empresa e histórico detalhados',
+              title: 'Complete Profile',
+              description: 'Receive detailed name, position, company and history',
               icon: TrendingUp,
               color: 'from-green-500 to-green-600'
             }
@@ -134,8 +134,8 @@ const EmailEnrichmentPage = () => {
             <Mail className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Descobrir Perfil</h2>
-            <p className="text-gray-600">Insira um email para começar o enriquecimento</p>
+            <h2 className="text-2xl font-bold text-gray-900">Discover Profile</h2>
+            <p className="text-gray-600">Enter an email to start enrichment</p>
           </div>
         </div>
         
@@ -153,16 +153,16 @@ const EmailEnrichmentPage = () => {
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">
-                    Leads Encontrados ({enrichedLeads.length})
+                    Leads Found ({enrichedLeads.length})
                   </h2>
-                  <p className="text-green-600">Dados coletados com sucesso</p>
+                  <p className="text-green-600">Data collected successfully</p>
                 </div>
               </div>
               <button
                 onClick={handleClearResults}
                 className="bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-3 px-6 rounded-2xl transition-all duration-200"
               >
-                Limpar Resultados
+                Clear Results
               </button>
             </div>
 
@@ -181,14 +181,14 @@ const EmailEnrichmentPage = () => {
             <Mail className="h-10 w-10 text-white" />
           </div>
           <h3 className="text-2xl font-bold text-gray-900 mb-3">
-            Nenhum lead encontrado ainda
+            No leads found yet
           </h3>
           <p className="text-gray-600 text-lg mb-6 max-w-md mx-auto">
-            Use o formulário acima para começar a enriquecer emails e descobrir perfis profissionais completos
+            Use the form above to start enriching emails and discover complete professional profiles
           </p>
           <div className="inline-flex items-center text-purple-600 font-semibold">
             <Sparkles className="h-5 w-5 mr-2" />
-            Comece digitando um email corporativo
+            Start by typing a corporate email
           </div>
         </div>
       )}
@@ -200,17 +200,17 @@ const EmailEnrichmentPage = () => {
             <Target className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Dicas para Melhores Resultados</h2>
-            <p className="text-gray-600">Maximize a qualidade dos dados encontrados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Tips for Better Results</h2>
+            <p className="text-gray-600">Maximize the quality of found data</p>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            '✅ Use emails corporativos para maior precisão (ex: nome@empresa.com)',
-            '🎯 Emails de executivos geralmente retornam mais informações',
-            '🌐 O sistema funciona melhor com empresas que têm presença online',
-            '🔒 Informações são coletadas apenas de fontes públicas e verificadas'
+            '✅ Use corporate emails for higher accuracy (ex: name@company.com)',
+            '🎯 Executive emails usually return more information',
+            '🌐 System works better with companies that have online presence',
+            '🔒 Information is collected only from public and verified sources'
           ].map((tip, index) => (
             <div key={index} className="flex items-start p-4 bg-gray-50 rounded-2xl">
               <div className="text-lg mr-3">{tip.split(' ')[0]}</div>

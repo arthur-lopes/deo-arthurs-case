@@ -45,7 +45,7 @@ const UploadPage = () => {
     try {
       setFileName(file.name);
       setIsProcessing(true);
-      setProcessingStatus('Analisando arquivo CSV...');
+      setProcessingStatus('Analyzing CSV file...');
       setProcessingProgress(10);
       setError(null);
       
@@ -53,7 +53,7 @@ const UploadPage = () => {
       const { data } = await parseCSV(file);
       
       if (data.length === 0) {
-        throw new Error('O arquivo não contém dados válidos.');
+        throw new Error('The file does not contain valid data.');
       }
       
       setOriginalLeads(data);
@@ -84,10 +84,10 @@ const UploadPage = () => {
       setLeads(processedLeads);
       
       // Complete
-      setProcessingStatus('Processamento concluído!');
+      setProcessingStatus('Processing completed!');
       setProcessingProgress(100);
       
-      toast.success('Dados processados com sucesso!');
+      toast.success('Data processed successfully!');
       
       // Navigate to results page after a brief delay
       setTimeout(() => {
@@ -96,15 +96,15 @@ const UploadPage = () => {
       
     } catch (err) {
       console.error('Error processing file:', err);
-      setError(err instanceof Error ? err.message : 'Erro ao processar o arquivo.');
+      setError(err instanceof Error ? err.message : 'Error processing file.');
       setIsProcessing(false);
       setProcessingProgress(0);
-      toast.error('Erro ao processar o arquivo.');
+      toast.error('Error processing file.');
     }
   };
 
   const handleFileRemoved = () => {
-    // Limpar todos os estados relacionados ao arquivo
+    // Clear all file-related states
     setFileName('');
     setLeads([]);
     setOriginalLeads([]);
@@ -112,42 +112,42 @@ const UploadPage = () => {
     setProcessingProgress(0);
     setProcessingStatus('');
     setError(null);
-    toast.success('Arquivo removido com sucesso!');
+    toast.success('File removed successfully!');
   };
 
   const processingOptions = [
     {
       id: 'clean',
-      title: 'Apenas Limpeza',
-      subtitle: 'Processamento Básico',
-      description: 'Normaliza nomes, formata telefones e padroniza dados sem usar IA',
-      features: ['⚡ Processamento rápido (~50ms/lead)', '💰 Sem custos de IA', '📊 Padronização básica'],
+      title: 'Clean Only',
+      subtitle: 'Basic Processing',
+      description: 'Normalizes names, formats phones and standardizes data without using AI',
+      features: ['⚡ Fast processing (~50ms/lead)', '💰 No AI costs', '📊 Basic standardization'],
       icon: FileText,
       color: 'from-green-500 to-green-600',
-      time: '~30s para 1000 leads',
-      cost: 'Gratuito'
+      time: '~30s for 1000 leads',
+      cost: 'Free'
     },
     {
       id: 'enrich',
-      title: 'Limpeza + Enriquecimento',
-      subtitle: 'Processamento Padrão (Recomendado)',
-      description: 'Adiciona especialidade e senioridade usando IA, mantendo dados originais',
-      features: ['🤖 Análise com OpenAI', '🎯 Especialidade profissional', '📈 Grau de senioridade'],
+      title: 'Clean + Enrichment',
+      subtitle: 'Standard Processing (Recommended)',
+      description: 'Adds specialty and seniority using AI, keeping original data',
+      features: ['🤖 OpenAI analysis', '🎯 Professional specialty', '📈 Seniority level'],
       icon: Zap,
       color: 'from-blue-500 to-blue-600',
-      time: '~5min para 1000 leads',
-      cost: 'Baixo custo IA'
+      time: '~5min for 1000 leads',
+      cost: 'Low AI cost'
     },
     {
       id: 'advanced',
-      title: 'Deduplicação Avançada',
-      subtitle: 'Processamento Completo',
-      description: 'Remove duplicatas com IA, consolida informações e otimiza base de dados',
-      features: ['🧠 IA avançada (análise completa)', '🔄 Detecção de duplicatas', '⚙️ Consolidação inteligente'],
+      title: 'Advanced Deduplication',
+      subtitle: 'Complete Processing',
+      description: 'Removes duplicates with AI, consolidates information and optimizes database',
+      features: ['🧠 Advanced AI (full analysis)', '🔄 Duplicate detection', '⚙️ Smart consolidation'],
       icon: Brain,
       color: 'from-purple-500 to-purple-600',
-      time: '~15min para 1000 leads',
-      cost: 'Alto custo IA'
+      time: '~15min for 1000 leads',
+      cost: 'High AI cost'
     }
   ];
 
@@ -163,14 +163,14 @@ const UploadPage = () => {
                 <Upload className="h-8 w-8 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Processar CSV</h1>
-                <p className="text-orange-100">IA transforma seus dados em insights valiosos</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Process CSV</h1>
+                <p className="text-orange-100">AI transforms your data into valuable insights</p>
               </div>
             </div>
             <ApiStatusIndicator />
           </div>
           <p className="text-xl md:text-2xl text-orange-100 max-w-4xl leading-relaxed">
-            Carregue seus dados e escolha o nível de processamento ideal. Nossa IA limpa, enriquece e deduplica automaticamente.
+            Upload your data and choose the ideal processing level. Our AI cleans, enriches and deduplicates automatically.
           </p>
         </div>
       </div>
@@ -180,20 +180,20 @@ const UploadPage = () => {
         {[
           {
             icon: Sparkles,
-            title: 'IA Inteligente',
-            description: 'OpenAI GPT-4 analisa e enriquece cada lead com precisão',
+            title: 'Smart AI',
+            description: 'OpenAI GPT-4 analyzes and enriches each lead with precision',
             color: 'from-blue-500 to-blue-600'
           },
           {
             icon: Target,
-            title: 'Dados Precisos',
-            description: 'Especialidades e senioridade baseados em análise real',
+            title: 'Accurate Data',
+            description: 'Specialties and seniority based on real analysis',
             color: 'from-green-500 to-green-600'
           },
           {
             icon: TrendingUp,
-            title: 'Resultados Rápidos',
-            description: 'Processamento otimizado com feedback em tempo real',
+            title: 'Fast Results',
+            description: 'Optimized processing with real-time feedback',
             color: 'from-purple-500 to-purple-600'
           }
         ].map((feature, index) => {
@@ -214,7 +214,7 @@ const UploadPage = () => {
         <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-2xl flex items-start shadow-lg">
           <AlertCircle className="h-6 w-6 mr-3 mt-0.5 flex-shrink-0" />
           <div>
-            <p className="font-semibold">Erro no processamento</p>
+            <p className="font-semibold">Processing Error</p>
             <p className="text-sm mt-1">{error}</p>
           </div>
         </div>
@@ -227,8 +227,8 @@ const UploadPage = () => {
             <Settings className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Opções de Processamento</h2>
-            <p className="text-gray-600">Escolha o método ideal para seus dados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Processing Options</h2>
+            <p className="text-gray-600">Choose the ideal method for your data</p>
           </div>
         </div>
         
@@ -291,8 +291,8 @@ const UploadPage = () => {
             <Upload className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Carregar Arquivo</h2>
-            <p className="text-gray-600">Faça upload do seu arquivo CSV para começar</p>
+            <h2 className="text-2xl font-bold text-gray-900">Upload File</h2>
+            <p className="text-gray-600">Upload your CSV file to get started</p>
           </div>
         </div>
 
@@ -307,14 +307,14 @@ const UploadPage = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <FileText className="h-5 w-5 text-gray-500 mr-2" />
-              <span className="text-sm font-medium text-gray-700">Arquivo de Exemplo</span>
+              <span className="text-sm font-medium text-gray-700">Sample File</span>
             </div>
             <a
               href="/exemplo_leads.csv"
-              download="exemplo_leads.csv"
+              download="sample_leads.csv"
               className="text-blue-600 hover:text-blue-500 text-sm font-medium"
             >
-              📥 Baixar arquivo de exemplo
+              📥 Download sample file
             </a>
           </div>
         </div>
@@ -328,8 +328,8 @@ const UploadPage = () => {
               <Sparkles className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Processamento em Andamento</h2>
-              <p className="text-gray-600">Nossa IA está analisando seus dados</p>
+              <h2 className="text-2xl font-bold text-gray-900">Processing in Progress</h2>
+              <p className="text-gray-600">Our AI is analyzing your data</p>
             </div>
           </div>
           <ProgressIndicator
@@ -346,21 +346,21 @@ const UploadPage = () => {
             <Target className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Instruções e Requisitos</h2>
-            <p className="text-gray-600">Prepare seu arquivo para melhores resultados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Instructions and Requirements</h2>
+            <p className="text-gray-600">Prepare your file for best results</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Requirements */}
           <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-4">📋 Requisitos do Arquivo</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4">📋 File Requirements</h3>
             <div className="space-y-3">
               {[
-                'Formato CSV (valores separados por vírgula)',
-                'Tamanho máximo de 5MB',
-                'Codificação UTF-8 para caracteres especiais',
-                'Primeira linha deve conter os cabeçalhos'
+                'CSV format (comma-separated values)',
+                'Maximum file size of 5MB',
+                'UTF-8 encoding for special characters',
+                'First row must contain headers'
               ].map((requirement, index) => (
                 <div key={index} className="flex items-center p-3 bg-green-50 rounded-xl">
                   <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
@@ -372,13 +372,13 @@ const UploadPage = () => {
 
           {/* Column Requirements */}
           <div>
-            <h3 className="text-lg font-bold text-gray-900 mb-4">📊 Colunas Necessárias</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4">📊 Required Columns</h3>
             <div className="space-y-3">
               {[
-                { name: 'Full Name', desc: 'Nome completo do lead', required: true },
-                { name: 'Company', desc: 'Nome da empresa', required: true },
-                { name: 'Job Title', desc: 'Cargo atual', required: true },
-                { name: 'Email', desc: 'Endereço de email', required: true }
+                { name: 'Full Name', desc: 'Complete lead name', required: true },
+                { name: 'Company', desc: 'Company name', required: true },
+                { name: 'Job Title', desc: 'Current position', required: true },
+                { name: 'Email', desc: 'Email address', required: true }
               ].map((column, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-blue-50 rounded-xl">
                   <div>
@@ -387,7 +387,7 @@ const UploadPage = () => {
                   </div>
                   {column.required && (
                     <span className="text-xs bg-red-100 text-red-600 px-2 py-1 rounded-full font-medium">
-                      Obrigatório
+                      Required
                     </span>
                   )}
                 </div>
@@ -398,15 +398,15 @@ const UploadPage = () => {
 
         {/* Optional Columns */}
         <div className="mt-8 p-6 bg-gray-50 rounded-2xl">
-          <h3 className="text-lg font-bold text-gray-900 mb-4">📈 Colunas Opcionais (Recomendadas)</h3>
+          <h3 className="text-lg font-bold text-gray-900 mb-4">📈 Optional Columns (Recommended)</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
-              { name: 'Phone Number', benefit: 'Melhor contato e validação' },
-              { name: 'Source', benefit: 'Análise de canais de aquisição' },
-              { name: 'Lifecycle Stage', benefit: 'Segmentação por estágio' },
-              { name: 'ZIP Code', benefit: 'Análise geográfica' },
-              { name: 'Sales Status', benefit: 'Controle de pipeline' },
-              { name: 'Lead Score', benefit: 'Priorização de leads' }
+              { name: 'Phone Number', benefit: 'Better contact and validation' },
+              { name: 'Source', benefit: 'Acquisition channel analysis' },
+              { name: 'Lifecycle Stage', benefit: 'Stage-based segmentation' },
+              { name: 'ZIP Code', benefit: 'Geographic analysis' },
+              { name: 'Sales Status', benefit: 'Pipeline control' },
+              { name: 'Lead Score', benefit: 'Lead prioritization' }
             ].map((column, index) => (
               <div key={index} className="flex items-center p-3 bg-white rounded-xl border border-gray-200">
                 <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
@@ -421,38 +421,38 @@ const UploadPage = () => {
 
         {/* Processing Mode Benefits */}
         <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
-          <h3 className="text-lg font-bold text-gray-900 mb-4">✨ Benefícios do Modo Selecionado</h3>
+          <h3 className="text-lg font-bold text-gray-900 mb-4">✨ Selected Mode Benefits</h3>
           <div className="text-sm text-blue-700">
             {processingMode === 'clean' && (
               <div className="space-y-2">
-                <p className="font-medium">Modo: Apenas Limpeza</p>
+                <p className="font-medium">Mode: Clean Only</p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Padronização automática de nomes e empresas</li>
-                  <li>Formatação consistente de telefones</li>
-                  <li>Remoção de espaços extras e caracteres especiais</li>
-                  <li>Processamento rápido sem custos de IA</li>
+                  <li>Automatic standardization of names and companies</li>
+                  <li>Consistent phone number formatting</li>
+                  <li>Removal of extra spaces and special characters</li>
+                  <li>Fast processing without AI costs</li>
                 </ul>
               </div>
             )}
             {processingMode === 'enrich' && (
               <div className="space-y-2">
-                <p className="font-medium">Modo: Limpeza + Enriquecimento (Recomendado)</p>
+                <p className="font-medium">Mode: Clean + Enrichment (Recommended)</p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Todos os benefícios da limpeza básica</li>
-                  <li>Identificação automática de especialidades profissionais</li>
-                  <li>Classificação de senioridade (Junior, Senior, C-Level, etc.)</li>
-                  <li>Análise inteligente baseada em cargo e empresa</li>
+                  <li>All benefits of basic cleaning</li>
+                  <li>Automatic identification of professional specialties</li>
+                  <li>Seniority classification (Junior, Senior, C-Level, etc.)</li>
+                  <li>Smart analysis based on position and company</li>
                 </ul>
               </div>
             )}
             {processingMode === 'advanced' && (
               <div className="space-y-2">
-                <p className="font-medium">Modo: Deduplicação Avançada</p>
+                <p className="font-medium">Mode: Advanced Deduplication</p>
                 <ul className="list-disc list-inside space-y-1 ml-4">
-                  <li>Todos os benefícios do enriquecimento</li>
-                  <li>Detecção inteligente de duplicatas por IA</li>
-                  <li>Consolidação automática de informações</li>
-                  <li>Otimização da base de dados para campanhas</li>
+                  <li>All enrichment benefits</li>
+                  <li>AI-powered duplicate detection</li>
+                  <li>Automatic information consolidation</li>
+                  <li>Database optimization for campaigns</li>
                 </ul>
               </div>
             )}
@@ -468,8 +468,8 @@ const UploadPage = () => {
               <ArrowRight className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Pronto para Começar?</h2>
-              <p className="text-orange-600">Siga estes passos simples</p>
+              <h2 className="text-2xl font-bold text-gray-900">Ready to Get Started?</h2>
+              <p className="text-orange-600">Follow these simple steps</p>
             </div>
           </div>
           
@@ -477,22 +477,22 @@ const UploadPage = () => {
             {[
               {
                 step: '1',
-                title: 'Prepare o Arquivo',
-                description: 'Baixe o exemplo e organize seus dados no formato CSV correto',
+                title: 'Prepare File',
+                description: 'Download the sample and organize your data in the correct CSV format',
                 icon: FileText,
                 color: 'from-blue-500 to-blue-600'
               },
               {
                 step: '2',
-                title: 'Escolha o Modo',
-                description: 'Selecione o tipo de processamento ideal para suas necessidades',
+                title: 'Choose Mode',
+                description: 'Select the type of processing ideal for your needs',
                 icon: Settings,
                 color: 'from-green-500 to-green-600'
               },
               {
                 step: '3',
-                title: 'Faça Upload',
-                description: 'Arraste o arquivo e aguarde o processamento automático',
+                title: 'Upload',
+                description: 'Drag the file and wait for automatic processing',
                 icon: Upload,
                 color: 'from-purple-500 to-purple-600'
               }

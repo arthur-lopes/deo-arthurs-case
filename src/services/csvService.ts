@@ -102,22 +102,22 @@ export const parseCSV = (file: File): Promise<CSVParseResult> => {
           const errors: string[] = [];
           
           if (leads.length === 0) {
-            errors.push('Nenhum lead válido encontrado no arquivo.');
+            errors.push('No valid leads found in the file.');
           }
           
           if (results.errors.length > 0) {
             results.errors.forEach(error => {
-              errors.push(`Linha ${error.row}: ${error.message}`);
+              errors.push(`Row ${error.row}: ${error.message}`);
             });
           }
 
           resolve({ data: leads, errors });
         } catch (error) {
-          reject(new Error('Erro ao processar o arquivo CSV.'));
+          reject(new Error('Error processing CSV file.'));
         }
       },
       error: (error) => {
-        reject(new Error(`Erro ao ler o arquivo: ${error.message}`));
+        reject(new Error(`Error reading file: ${error.message}`));
       },
     });
   });
@@ -133,13 +133,13 @@ export const processLeadsCleanOnly = async (
   
   const processedLeads: Lead[] = [];
   
-  onStatus('Iniciando limpeza de dados...');
+  onStatus('Starting data cleaning...');
   onProgress(20);
   
   // Clean all leads without enrichment
   for (let i = 0; i < leads.length; i++) {
     const lead = leads[i];
-    onStatus(`Limpando dados do lead ${i + 1} de ${leads.length}...`);
+    onStatus(`Cleaning lead ${i + 1} of ${leads.length}...`);
     
     const cleanedLead = cleanLeadData(lead);
     // Mark as clean-only processing
@@ -154,13 +154,13 @@ export const processLeadsCleanOnly = async (
     await new Promise(resolve => setTimeout(resolve, 30));
   }
   
-  onStatus('Finalizando processamento...');
+  onStatus('Finalizing processing...');
   onProgress(95);
   
   // Final delay
   await new Promise(resolve => setTimeout(resolve, 300));
   
-  onStatus('Processamento concluído!');
+  onStatus('Processing completed!');
   onProgress(100);
   
   return processedLeads;
@@ -176,13 +176,13 @@ export const processLeads = async (
   
   const processedLeads: Lead[] = [];
   
-  onStatus('Iniciando limpeza de dados...');
+  onStatus('Starting data cleaning...');
   onProgress(20);
   
   // Step 1: Clean all leads
   for (let i = 0; i < leads.length; i++) {
     const lead = leads[i];
-    onStatus(`Limpando dados do lead ${i + 1} de ${leads.length}...`);
+    onStatus(`Cleaning lead ${i + 1} of ${leads.length}...`);
     
     const cleanedLead = cleanLeadData(lead);
     processedLeads.push(cleanedLead);
@@ -195,19 +195,19 @@ export const processLeads = async (
     await new Promise(resolve => setTimeout(resolve, 50));
   }
   
-  onStatus('Iniciando enriquecimento com IA...');
+  onStatus('Starting AI enrichment...');
   onProgress(50);
   
   // Step 2: Enrich all leads
   for (let i = 0; i < processedLeads.length; i++) {
     const lead = processedLeads[i];
-    onStatus(`Enriquecendo lead ${i + 1} de ${processedLeads.length} com IA...`);
+    onStatus(`Enriching lead ${i + 1} of ${processedLeads.length} with AI...`);
     
     try {
       const enrichedLead = await enrichLead(lead);
       processedLeads[i] = enrichedLead;
     } catch (error) {
-      console.error(`Erro ao enriquecer lead ${lead.nome}:`, error);
+      console.error(`Error enriching lead ${lead.nome}:`, error);
       // Continue with the cleaned lead if enrichment fails
     }
     
@@ -219,13 +219,13 @@ export const processLeads = async (
     await new Promise(resolve => setTimeout(resolve, 100));
   }
   
-  onStatus('Finalizando processamento...');
+  onStatus('Finalizing processing...');
   onProgress(95);
   
   // Final delay
   await new Promise(resolve => setTimeout(resolve, 500));
   
-  onStatus('Processamento concluído!');
+  onStatus('Processing completed!');
   onProgress(100);
   
   return processedLeads;
@@ -239,7 +239,7 @@ export const processLeadsAdvanced = async (
   return await advancedDeduplicationService.processAdvancedDeduplication(leads, onProgress, onStatus);
 };
 
-export const exportToCSV = (leads: Lead[], filename: string = 'leads_processados.csv'): void => {
+export const exportToCSV = (leads: Lead[], filename: string = 'processed_leads.csv'): void => {
   const csv = Papa.unparse(leads, {
     header: true,
     columns: ['nome', 'empresa', 'titulo', 'telefone', 'email', 'especialidade', 'grau'],

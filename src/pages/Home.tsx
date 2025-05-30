@@ -4,61 +4,61 @@ import { FileUp, BarChart2, GraduationCap, Globe, Mail, BookOpen, TrendingUp, Us
 
 const Home = () => {
   const stats = [
-    { label: 'Leads Processados', value: '12.5K+', icon: Users, color: 'from-blue-500 to-blue-600' },
-    { label: 'Empresas Analisadas', value: '1.2K+', icon: Database, color: 'from-green-500 to-green-600' },
-    { label: 'Taxa de Precisão', value: '94.5%', icon: TrendingUp, color: 'from-purple-500 to-purple-600' },
-    { label: 'Tempo Economizado', value: '850h', icon: Zap, color: 'from-orange-500 to-orange-600' },
+    { label: 'Leads Processed', value: '12.5K+', icon: Users, color: 'from-blue-500 to-blue-600' },
+    { label: 'Companies Analyzed', value: '1.2K+', icon: Database, color: 'from-green-500 to-green-600' },
+    { label: 'Accuracy Rate', value: '94.5%', icon: TrendingUp, color: 'from-purple-500 to-purple-600' },
+    { label: 'Time Saved', value: '850h', icon: Zap, color: 'from-orange-500 to-orange-600' },
   ];
 
   const features = [
     {
       to: '/upload',
-      title: 'Processar CSV',
-      description: 'Upload e processamento inteligente de dados com IA avançada',
+      title: 'Process CSV',
+      description: 'Intelligent data upload and processing with advanced AI',
       icon: FileUp,
       gradient: 'from-blue-600 to-indigo-600',
-      badge: 'Mais Popular',
-      features: ['Limpeza automática', 'Detecção de duplicatas', 'IA consolidadora']
+      badge: 'Most Popular',
+      features: ['Automatic cleaning', 'Duplicate detection', 'AI consolidation']
     },
     {
       to: '/domain',
-      title: 'Buscar por Domínio',
-      description: 'Encontre leads automaticamente a partir do website da empresa',
+      title: 'Domain Search',
+      description: 'Find leads automatically from company website domains',
       icon: Globe,
       gradient: 'from-green-600 to-emerald-600',
-      badge: 'IA Avançada',
-      features: ['Busca inteligente', 'Dados em tempo real', 'Múltiplas fontes']
+      badge: 'Advanced AI',
+      features: ['Smart search', 'Real-time data', 'Multiple sources']
     },
     {
       to: '/email',
-      title: 'Enriquecer Email',
-      description: 'Obtenha perfil profissional completo usando email específico',
+      title: 'Email Enrichment',
+      description: 'Get complete professional profile using specific email address',
       icon: Mail,
       gradient: 'from-purple-600 to-pink-600',
-      badge: 'Perfil Completo',
-      features: ['Dados sociais', 'Histórico profissional', 'Empresa atual']
+      badge: 'Full Profile',
+      features: ['Social data', 'Professional history', 'Current company']
     }
   ];
 
   const tools = [
     {
       to: '/results',
-      title: 'Centro de Resultados',
-      description: 'Visualize, analise e exporte seus dados processados',
+      title: 'Results Center',
+      description: 'Visualize, analyze and export your processed data',
       icon: BarChart2,
       color: 'text-indigo-600'
     },
     {
       to: '/tutorial',
-      title: 'Tutorial HubSpot',
-      description: 'Aprenda a criar datasets e listas no HubSpot',
+      title: 'HubSpot Tutorial',
+      description: 'Learn to create datasets and lists in HubSpot',
       icon: GraduationCap,
       color: 'text-blue-600'
     },
     {
       to: '/course',
-      title: 'Academia DEO',
-      description: 'Curso completo de automação e análise de leads',
+      title: 'DEO Academy',
+      description: 'Complete course on lead automation and analysis',
       icon: BookOpen,
       color: 'text-purple-600'
     }
@@ -75,13 +75,13 @@ const Home = () => {
               <Sparkles className="h-7 w-7 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold">DEO - Arthur Case</h1>
-              <p className="text-blue-100">Plataforma Inteligente de Enriquecimento de Dados</p>
+              <h1 className="text-3xl md:text-4xl font-bold">DEO - Arthur's Case</h1>
+              <p className="text-blue-100">Intelligent Data Enrichment Platform</p>
             </div>
           </div>
           <p className="text-xl md:text-2xl text-blue-100 max-w-2xl leading-relaxed">
-            Transforme dados brutos em insights valiosos com nossa IA avançada. 
-            Limpe, padronize e enriqueça seus leads automaticamente.
+            Transform raw data into valuable insights with our advanced AI. 
+            Clean, standardize and enrich your leads automatically.
           </p>
         </div>
       </div>
@@ -105,8 +105,8 @@ const Home = () => {
       {/* Main Features */}
       <div className="space-y-6">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Ferramentas Principais</h2>
-          <p className="text-gray-600">Escolha a melhor abordagem para seus dados</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Main Tools</h2>
+          <p className="text-gray-600">Choose the best approach for your data</p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -141,7 +141,7 @@ const Home = () => {
                 </div>
                 
                 <div className="flex items-center text-blue-600 font-semibold group-hover:text-blue-700 transition-colors">
-                  Começar agora
+                  Get started now
                   <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </div>
               </Link>
@@ -153,8 +153,8 @@ const Home = () => {
       {/* Additional Tools */}
       <div className="space-y-6">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Ferramentas Complementares</h2>
-          <p className="text-gray-600">Maximize seus resultados com essas funcionalidades</p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Additional Tools</h2>
+          <p className="text-gray-600">Maximize your results with these features</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -185,9 +185,9 @@ const Home = () => {
       {/* Process Overview */}
       <div className="bg-gradient-to-r from-gray-50 to-blue-50 rounded-3xl p-8 md:p-12">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Como Funciona</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">How It Works</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Três abordagens diferentes para atender suas necessidades de enriquecimento de dados
+            Three different approaches to meet your data enrichment needs
           </p>
         </div>
         
@@ -197,14 +197,14 @@ const Home = () => {
               <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <FileUp className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Método CSV</h3>
-              <p className="text-blue-600 font-medium">Upload e Processamento</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">CSV Method</h3>
+              <p className="text-blue-600 font-medium">Upload & Processing</p>
             </div>
             
             {[
-              { step: '1', title: 'Upload de Dados', desc: 'Carregue seu arquivo CSV com leads' },
-              { step: '2', title: 'Limpeza Automática', desc: 'IA limpa e padroniza os dados' },
-              { step: '3', title: 'Enriquecimento', desc: 'Adiciona especialidades e graus' }
+              { step: '1', title: 'Data Upload', desc: 'Upload your CSV file with leads' },
+              { step: '2', title: 'Automatic Cleaning', desc: 'AI cleans and standardizes data' },
+              { step: '3', title: 'Enrichment', desc: 'Adds specialties and seniority levels' }
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -223,14 +223,14 @@ const Home = () => {
               <div className="w-16 h-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Globe className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Método Domínio</h3>
-              <p className="text-green-600 font-medium">IA Descobre Leads</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Domain Method</h3>
+              <p className="text-green-600 font-medium">AI Discovers Leads</p>
             </div>
             
             {[
-              { step: '1', title: 'Digite o Domínio', desc: 'Insira website da empresa' },
-              { step: '2', title: 'IA Pesquisa', desc: 'IA identifica leads automaticamente' },
-              { step: '3', title: 'Dados Completos', desc: 'Receba perfis profissionais completos' }
+              { step: '1', title: 'Enter Domain', desc: 'Input company website' },
+              { step: '2', title: 'AI Search', desc: 'AI identifies leads automatically' },
+              { step: '3', title: 'Complete Data', desc: 'Receive complete professional profiles' }
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -249,14 +249,14 @@ const Home = () => {
               <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Mail className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Método Email</h3>
-              <p className="text-purple-600 font-medium">Perfil Individual</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Email Method</h3>
+              <p className="text-purple-600 font-medium">Individual Profile</p>
             </div>
             
             {[
-              { step: '1', title: 'Email Específico', desc: 'Insira um email profissional' },
-              { step: '2', title: 'Busca Avançada', desc: 'IA coleta dados de múltiplas fontes' },
-              { step: '3', title: 'Perfil Rico', desc: 'Histórico profissional detalhado' }
+              { step: '1', title: 'Specific Email', desc: 'Enter a professional email' },
+              { step: '2', title: 'Advanced Search', desc: 'AI collects data from multiple sources' },
+              { step: '3', title: 'Rich Profile', desc: 'Detailed professional history' }
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">

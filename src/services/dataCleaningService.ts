@@ -82,9 +82,9 @@ function capitalizeTitle(title: string): string {
   // Normalize common abbreviations
   const titleNormalized = title
     .toLowerCase()
-    .replace(/\bjr\b/i, 'Júnior')
-    .replace(/\bsr\b/i, 'Sênior')
-    .replace(/\bmgr\b/i, 'Gerente');
+    .replace(/\bjr\b/i, 'Junior')
+    .replace(/\bsr\b/i, 'Senior')
+    .replace(/\bmgr\b/i, 'Manager');
   
   return titleNormalized
     .split(' ')

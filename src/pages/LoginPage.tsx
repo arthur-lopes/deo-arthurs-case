@@ -19,7 +19,7 @@ const LoginPage = () => {
     e.preventDefault();
     
     if (!username || !password) {
-      toast.error('Por favor, preencha todos os campos');
+      toast.error('Please fill in all fields');
       return;
     }
 
@@ -29,22 +29,22 @@ const LoginPage = () => {
       const success = await login(username, password);
       
       if (success) {
-        toast.success('Login realizado com sucesso!');
+        toast.success('Login successful!');
       } else {
-        toast.error('Credenciais inválidas. Tente novamente.');
+        toast.error('Invalid credentials. Please try again.');
       }
     } catch (error) {
-      toast.error('Erro ao fazer login. Tente novamente.');
+      toast.error('Login error. Please try again.');
     } finally {
       setIsLoading(false);
     }
   };
 
   const features = [
-    'Enriquecimento de leads com IA',
-    'Análise automática de dados',
-    'Integração com múltiplas APIs',
-    'Dashboards em tempo real'
+    'AI-powered lead enrichment',
+    'Automatic data analysis',
+    'Multiple API integrations',
+    'Real-time dashboards'
   ];
 
   return (
@@ -68,7 +68,7 @@ const LoginPage = () => {
             Lead Data Enrichment Platform
           </p>
           <p className="text-gray-400">
-            Faça login para acessar a plataforma de enriquecimento de dados
+            Log in to access the data enrichment platform
           </p>
         </div>
 
@@ -81,15 +81,15 @@ const LoginPage = () => {
                   <Shield className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-white">Área Restrita</h2>
-                  <p className="text-gray-300">Acesso seguro</p>
+                  <h2 className="text-2xl font-bold text-white">Restricted Area</h2>
+                  <p className="text-gray-300">Secure access</p>
                 </div>
               </div>
 
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor="username" className="block text-sm font-medium text-gray-200 mb-2">
-                    Usuário
+                    Username
                   </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -104,14 +104,14 @@ const LoginPage = () => {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       className="appearance-none block w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-2xl placeholder-gray-400 text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-400 transition-all duration-200"
-                      placeholder="Digite seu usuário"
+                      placeholder="Enter your username"
                     />
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
-                    Senha
+                    Password
                   </label>
                   <div className="relative group">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -126,7 +126,7 @@ const LoginPage = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       className="appearance-none block w-full pl-12 pr-4 py-4 bg-white/10 border-2 border-white/20 rounded-2xl placeholder-gray-400 text-white focus:outline-none focus:ring-4 focus:ring-blue-500/20 focus:border-blue-400 transition-all duration-200"
-                      placeholder="Digite sua senha"
+                      placeholder="Enter your password"
                     />
                   </div>
                 </div>
@@ -140,11 +140,11 @@ const LoginPage = () => {
                     {isLoading ? (
                       <div className="flex items-center">
                         <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
-                        Entrando...
+                        Logging in...
                       </div>
                     ) : (
                       <div className="flex items-center">
-                        Acessar Plataforma
+                        Access Platform
                         <ArrowRight className="ml-3 h-5 w-5" />
                       </div>
                     )}

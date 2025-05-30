@@ -223,23 +223,23 @@ const analyzeHTMLWithOpenAI = async (domain: string, htmlContent: string): Promi
         messages: [
           {
             role: 'system',
-            content: `Você é um especialista em análise de websites de empresas americanas. Sua função é extrair informações REAIS e verificáveis do HTML fornecido.
+            content: `You are an expert in analyzing websites of American companies. Your function is to extract REAL and verifiable information from the provided HTML.
 
-REGRAS CRÍTICAS:
-- APENAS extraia informações que estão EXPLICITAMENTE presentes no HTML
-- NUNCA invente nomes, cargos, telefones ou emails
-- Se não encontrar informações de contato reais, retorne lista vazia
-- Foque em empresas dos Estados Unidos
-- Seja extremamente conservador - prefira retornar vazio a inventar
+CRITICAL RULES:
+- ONLY extract information that is EXPLICITLY present in the HTML
+- NEVER invent names, positions, phones or emails
+- If you don't find real contact information, return empty list
+- Focus on companies in the United States
+- Be extremely conservative - prefer returning empty rather than inventing
 
-PROCESSO:
-1. Analise o HTML fornecido
-2. Identifique informações da empresa (nome, descrição, setor)
-3. Procure por informações de contato REAIS (nomes, cargos, emails)
-4. Extraia apenas dados que estão claramente visíveis no site
-5. Se houver dúvida sobre a veracidade, não inclua
+PROCESS:
+1. Analyze the provided HTML
+2. Identify company information (name, description, industry)
+3. Look for REAL contact information (names, positions, emails)
+4. Extract only data that is clearly visible on the website
+5. If there's doubt about veracity, don't include it
 
-Retorne apenas JSON válido sem formatação markdown.`
+Return only valid JSON without markdown formatting.`
           },
           {
             role: 'user',
@@ -317,91 +317,91 @@ Retorne apenas JSON válido sem formatação markdown.`
 // Create prompt for HTML analysis
 const createHTMLAnalysisPrompt = (domain: string, htmlContent: string): string => {
   return `
-INSTRUÇÃO: Analise o HTML do website "${domain}" e extraia APENAS informações REAIS que estão explicitamente presentes no conteúdo.
+INSTRUCTION: Analyze the HTML of the website "${domain}" and extract ONLY REAL information that is explicitly present in the content.
 
-CONTEXTO: Este parece ser um website de clínica dentária. Procure especificamente por:
-- Nomes de dentistas com títulos como "Dr.", "DDS", "DMD"
-- Seções "About Us", "Our Team", "Meet the Doctor", "Staff", "Our Dentists"
-- Informações de contato: telefone, email, endereço
-- Especialidades dentárias mencionadas
-- Nomes de profissionais da equipe (recepcionistas, higienistas, etc.)
+CONTEXT: This appears to be a dental clinic website. Look specifically for:
+- Dentist names with titles like "Dr.", "DDS", "DMD"
+- Sections "About Us", "Our Team", "Meet the Doctor", "Staff", "Our Dentists"
+- Contact information: phone, email, address
+- Mentioned dental specialties
+- Professional team member names (receptionists, hygienists, etc.)
 
-ESTRATÉGIA DE BUSCA:
-1. Procure por padrões como "Dr. [Nome]", "[Nome], DDS", "[Nome], DMD"
-2. Identifique seções de equipe ou sobre nós
-3. Extraia informações de contato visíveis
-4. Identifique especialidades dentárias mencionadas
-5. Procure por informações de localização/endereço
+SEARCH STRATEGY:
+1. Look for patterns like "Dr. [Name]", "[Name], DDS", "[Name], DMD"
+2. Identify team or about us sections
+3. Extract visible contact information
+4. Identify mentioned dental specialties
+5. Look for location/address information
 
-REGRAS OBRIGATÓRIAS:
-1. APENAS use informações que estão CLARAMENTE visíveis no HTML fornecido
-2. NUNCA invente nomes, cargos, telefones ou emails
-3. Se não encontrar informações de contato reais, retorne leads: []
-4. Para clínicas dentárias, procure especificamente por "Dr.", "DDS", "DMD", "Dentist"
-5. Extraia apenas dados que podem ser verificados no HTML
-6. Se encontrar apenas um telefone geral, associe ao dentista principal se identificado
+MANDATORY RULES:
+1. ONLY use information that is CLEARLY visible in the provided HTML
+2. NEVER invent names, positions, phones or emails
+3. If you don't find real contact information, return leads: []
+4. For dental clinics, look specifically for "Dr.", "DDS", "DMD", "Dentist"
+5. Extract only data that can be verified in the HTML
+6. If you only find a general phone number, associate it with the main dentist if identified
 
-HTML DO WEBSITE (${htmlContent.length} caracteres):
+WEBSITE HTML (${htmlContent.length} characters):
 ${htmlContent}
 
-FORMATO DE RESPOSTA (JSON apenas, sem markdown):
+RESPONSE FORMAT (JSON only, no markdown):
 {
   "companyInfo": {
-    "name": "Nome da clínica encontrado no HTML",
-    "description": "Descrição dos serviços dentários encontrada", 
+    "name": "Clinic name found in HTML",
+    "description": "Description of dental services found", 
     "industry": "Healthcare - Dental",
-    "size": "Small Business" para clínicas locais,
-    "location": "Endereço completo se encontrado no HTML"
+    "size": "Small Business" for local clinics,
+    "location": "Complete address if found in HTML"
   },
   "leads": [
-    // APENAS se você encontrar informações REAIS de dentistas/equipe no HTML
-    // Exemplo: "Dr. John Smith, DDS" ou "Dr. Maria Garcia - Orthodontist"
+    // ONLY if you find REAL information about dentists/team in the HTML
+    // Example: "Dr. John Smith, DDS" or "Dr. Maria Garcia - Orthodontist"
     {
-      "nome": "Dr. [Nome Real encontrado no HTML]",
-      "titulo": "Dentist" ou "DDS" ou "DMD" ou especialidade específica, 
-      "telefone": "Telefone da clínica se encontrado",
-      "email": "Email específico se encontrado ou email geral da clínica",
-      "especialidade": "Healthcare" ou especialidade específica,
-      "grau": "Senior" para dentistas principais, "Specialist" para especialistas
+      "nome": "Dr. [Real Name found in HTML]",
+      "titulo": "Dentist" or "DDS" or "DMD" or specific specialty, 
+      "telefone": "Clinic phone if found",
+      "email": "Specific email if found or clinic general email",
+      "especialidade": "Healthcare" or specific specialty,
+      "grau": "Senior" for main dentists, "Specialist" for specialists
     }
   ]
 }
 
-ESPECIALIDADES DENTÁRIAS VÁLIDAS (se mencionadas no HTML):
-- Healthcare (dentista geral)
-- Healthcare - Orthodontics (ortodontia)
-- Healthcare - Oral Surgery (cirurgia oral)
-- Healthcare - Pediatric Dentistry (odontopediatria)
-- Healthcare - Periodontics (periodontia)
-- Healthcare - Endodontics (endodontia)
-- Healthcare - Prosthodontics (prótese)
+VALID DENTAL SPECIALTIES (if mentioned in HTML):
+- Healthcare (general dentist)
+- Healthcare - Orthodontics (orthodontics)
+- Healthcare - Oral Surgery (oral surgery)
+- Healthcare - Pediatric Dentistry (pediatric dentistry)
+- Healthcare - Periodontics (periodontics)
+- Healthcare - Endodontics (endodontics)
+- Healthcare - Prosthodontics (prosthodontics)
 
-GRAUS VÁLIDOS:
-- Senior (para dentistas proprietários/principais)
-- Specialist (para dentistas especialistas)
-- Associate (para dentistas associados)
-- Manager (para gerentes de consultório)
+VALID LEVELS:
+- Senior (for owner/main dentists)
+- Specialist (for specialist dentists)
+- Associate (for associate dentists)
+- Manager (for office managers)
 
-EXEMPLO DE BUSCA NO HTML:
-- Procure por: "Dr. Smith", "John Smith, DDS", "Dr. Maria Garcia - Orthodontist"
-- Telefones: "(555) 123-4567", "Call us at", "Phone:"
+HTML SEARCH EXAMPLE:
+- Look for: "Dr. Smith", "John Smith, DDS", "Dr. Maria Garcia - Orthodontist"
+- Phones: "(555) 123-4567", "Call us at", "Phone:"
 - Emails: "info@", "contact@", "dr.smith@"
-- Endereços: números + nome da rua + cidade + estado
+- Addresses: numbers + street name + city + state
 
-IMPORTANTE: Se você não conseguir encontrar informações REAIS de dentistas ou equipe no HTML do "${domain}", retorne:
+IMPORTANT: If you cannot find REAL information about dentists or team in the HTML of "${domain}", return:
 {
   "companyInfo": {
-    "name": "Nome da clínica encontrado no HTML",
-    "description": "Clínica dentária" ou descrição encontrada,
+    "name": "Clinic name found in HTML",
+    "description": "Dental clinic" or found description,
     "industry": "Healthcare - Dental",
     "size": "Small Business",
-    "location": "Endereço encontrado no HTML ou null"
+    "location": "Address found in HTML or null"
   },
   "leads": []
 }
 
-FOQUE EM ENCONTRAR: Nomes reais de dentistas, telefones de contato, emails, e endereço da clínica.
-Analise cuidadosamente o HTML fornecido e extraia apenas informações REAIS e verificáveis.
+FOCUS ON FINDING: Real dentist names, contact phones, emails, and clinic address.
+Carefully analyze the provided HTML and extract only REAL and verifiable information.
 `;
 };
 

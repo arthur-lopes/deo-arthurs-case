@@ -7,140 +7,140 @@ const TutorialPage = () => {
   const steps = [
     {
       number: '1',
-      title: 'Acesse a área de Datasets',
-      description: 'No menu principal do HubSpot, navegue até:',
-      path: 'Relatórios → Gerenciamento de dados → Conjuntos de dados',
+      title: 'Access Datasets Area',
+      description: 'In HubSpot main menu, navigate to:',
+      path: 'Reports → Data Management → Datasets',
       color: 'from-blue-500 to-blue-600'
     },
     {
       number: '2', 
-      title: 'Inicie um novo Dataset',
-      description: 'Clique no botão "Criar conjunto de dados" no canto superior direito da página.',
+      title: 'Start a New Dataset',
+      description: 'Click "Create dataset" button in the top right corner of the page.',
       color: 'from-green-500 to-green-600'
     },
     {
       number: '3',
-      title: 'Selecione as fontes de dados',
-      description: 'Escolha até 5 objetos do CRM como fontes para seu dataset:',
+      title: 'Select Data Sources',
+      description: 'Choose up to 5 CRM objects as sources for your dataset:',
       items: [
-        'Escolha Contatos como fonte primária para analisar seus leads enriquecidos',
-        'Adicione Empresas se quiser correlacionar os leads com suas empresas',
-        'Inclua Negócios para análises de conversão e receita',
-        'Opcionalmente adicione Tickets ou Produtos se relevante'
+        'Choose Contacts as primary source to analyze your enriched leads',
+        'Add Companies if you want to correlate leads with their companies',
+        'Include Deals for conversion and revenue analysis',
+        'Optionally add Tickets or Products if relevant'
       ],
       color: 'from-purple-500 to-purple-600'
     },
     {
       number: '4',
-      title: 'Adicione propriedades',
-      description: 'Selecione as propriedades que deseja incluir no dataset:',
+      title: 'Add Properties',
+      description: 'Select the properties you want to include in the dataset:',
       items: [
-        'Para contatos enriquecidos, inclua Nome, Empresa, Cargo e as propriedades personalizadas Especialidade e Grau',
-        'Da fonte Empresas, inclua Nome da empresa, Setor, Tamanho da empresa, etc.',
-        'De Negócios, adicione Valor, Fase, Data de fechamento, etc.'
+        'For enriched contacts, include Name, Company, Job Title and custom properties Specialty and Seniority',
+        'From Companies source, include Company Name, Industry, Company Size, etc.',
+        'From Deals, add Amount, Stage, Close Date, etc.'
       ],
       color: 'from-orange-500 to-orange-600'
     },
     {
       number: '5',
-      title: 'Salve e nomeie seu dataset',
-      description: 'Dê um nome descritivo ao seu conjunto de dados, como "Leads Enriquecidos - Análise de Conversão" e clique em "Salvar".',
+      title: 'Save and Name Your Dataset',
+      description: 'Give a descriptive name to your dataset, like "Enriched Leads - Conversion Analysis" and click "Save".',
       color: 'from-teal-500 to-teal-600'
     }
   ];
 
   const useCases = [
     {
-      title: 'Análise de Conversão por Especialidade',
-      description: 'Crie um relatório que mostra a taxa de conversão de leads para clientes, segmentando por especialidade profissional identificada pela IA.',
+      title: 'Conversion Analysis by Specialty',
+      description: 'Create a report showing lead-to-customer conversion rate, segmented by professional specialty identified by AI.',
       color: 'from-blue-500 to-blue-600',
       icon: TrendingUp,
       details: {
-        objective: 'Identificar quais especialidades profissionais convertem melhor em clientes para otimizar campanhas de marketing.',
-        chartType: 'Gráfico de Barras ou Funil',
+        objective: 'Identify which professional specialties convert better to customers to optimize marketing campaigns.',
+        chartType: 'Bar Chart or Funnel',
         dimensions: [
-          { name: 'Especialidade', description: 'Campo personalizado criado pela IA (Marketing, Vendas, TI, RH, etc.)', source: 'Contatos' },
-          { name: 'Mês/Ano', description: 'Data de criação do lead', source: 'Contatos' }
+          { name: 'Specialty', description: 'Custom field created by AI (Marketing, Sales, IT, HR, etc.)', source: 'Contacts' },
+          { name: 'Month/Year', description: 'Lead creation date', source: 'Contacts' }
         ],
         metrics: [
-          { name: 'Taxa de Conversão', description: 'Fórmula: (Negócios Fechados / Total de Leads) * 100', calculation: 'Campo calculado' },
-          { name: 'Total de Leads', description: 'Contagem de contatos por especialidade', calculation: 'COUNT(Contatos)' },
-          { name: 'Negócios Criados', description: 'Número de oportunidades abertas', calculation: 'COUNT(Negócios)' },
-          { name: 'Valor Médio do Negócio', description: 'Receita média por especialidade', calculation: 'AVG(Valor do Negócio)' }
+          { name: 'Conversion Rate', description: 'Formula: (Closed Deals / Total Leads) * 100', calculation: 'Calculated Field' },
+          { name: 'Total Leads', description: 'Count of contacts by specialty', calculation: 'COUNT(Contacts)' },
+          { name: 'Deals Created', description: 'Number of opportunities opened', calculation: 'COUNT(Deals)' },
+          { name: 'Average Deal Value', description: 'Average revenue by specialty', calculation: 'AVG(Deal Amount)' }
         ],
         filters: [
-          'Lifecycle Stage = "Lead" ou "Customer"',
-          'Data de criação nos últimos 12 meses',
-          'Especialidade não está vazia'
+          'Lifecycle Stage = "Lead" or "Customer"',
+          'Created date in last 12 months',
+          'Specialty is not empty'
         ],
         insights: [
-          'Especialidades com maior taxa de conversão',
-          'Valor médio de negócio por área profissional',
-          'Tendências sazonais de conversão',
-          'ROI por especialidade para otimização de budget'
+          'Specialties with highest conversion rates',
+          'Average deal value by professional area',
+          'Seasonal conversion trends',
+          'ROI by specialty for budget optimization'
         ]
       }
     },
     {
-      title: 'Distribuição de Leads por Grau de Senioridade',
-      description: 'Visualize como seus leads estão distribuídos entre diferentes níveis hierárquicos (Junior, Senior, C-Level) para otimizar abordagens.',
+      title: 'Lead Distribution by Seniority Level',
+      description: 'Visualize how your leads are distributed across different hierarchical levels (Junior, Senior, C-Level) to optimize approaches.',
       color: 'from-green-500 to-green-600',
       icon: Users,
       details: {
-        objective: 'Entender a distribuição hierárquica dos leads para personalizar estratégias de abordagem e pricing.',
-        chartType: 'Gráfico de Pizza ou Donut',
+        objective: 'Understand hierarchical distribution of leads to personalize approach and pricing strategies.',
+        chartType: 'Pie Chart or Donut Chart',
         dimensions: [
-          { name: 'Grau de Senioridade', description: 'Campo criado pela IA (Junior, Pleno, Senior, Gerente, Diretor, C-Level)', source: 'Contatos' },
-          { name: 'Setor da Empresa', description: 'Categoria da indústria', source: 'Empresas' }
+          { name: 'Seniority Level', description: 'Field created by AI (Junior, Mid-level, Senior, Manager, Director, C-Level)', source: 'Contacts' },
+          { name: 'Company Industry', description: 'Industry category', source: 'Companies' }
         ],
         metrics: [
-          { name: 'Quantidade de Leads', description: 'Total de contatos por nível hierárquico', calculation: 'COUNT(Contatos)' },
-          { name: 'Percentual por Nível', description: 'Distribuição percentual', calculation: '(COUNT por nível / COUNT total) * 100' },
-          { name: 'Lead Score Médio', description: 'Pontuação média por senioridade', calculation: 'AVG(Lead Score)' },
-          { name: 'Tempo Médio de Conversão', description: 'Dias até primeira compra', calculation: 'AVG(Data primeira compra - Data criação)' }
+          { name: 'Lead Count', description: 'Total contacts by hierarchical level', calculation: 'COUNT(Contacts)' },
+          { name: 'Percentage by Level', description: 'Percentage distribution', calculation: '(COUNT by level / COUNT total) * 100' },
+          { name: 'Average Lead Score', description: 'Average score by seniority', calculation: 'AVG(Lead Score)' },
+          { name: 'Average Conversion Time', description: 'Days to first purchase', calculation: 'AVG(First purchase date - Creation date)' }
         ],
         filters: [
-          'Grau de Senioridade não está vazio',
+          'Seniority Level is not empty',
           'Lifecycle Stage = "Lead", "MQL", "SQL"',
-          'Data de criação nos últimos 6 meses'
+          'Created date in last 6 months'
         ],
         insights: [
-          'Perfil hierárquico predominante dos leads',
-          'Níveis com maior propensão à compra',
-          'Estratégias de pricing por senioridade',
-          'Canais de aquisição mais efetivos por nível'
+          'Predominant hierarchical profile of leads',
+          'Levels with highest purchase propensity',
+          'Pricing strategies by seniority',
+          'Most effective acquisition channels by level'
         ]
       }
     },
     {
-      title: 'Performance de Campanhas por Segmento',
-      description: 'Compare o desempenho de diferentes campanhas de marketing baseado nas especialidades e senioridade dos leads capturados.',
+      title: 'Campaign Performance by Segment',
+      description: 'Compare performance of different marketing campaigns based on specialty and seniority of captured leads.',
       color: 'from-purple-500 to-purple-600',
       icon: BarChart2,
       details: {
-        objective: 'Otimizar campanhas de marketing identificando quais geram leads de maior qualidade por segmento profissional.',
-        chartType: 'Gráfico de Barras Agrupadas ou Matriz',
+        objective: 'Optimize marketing campaigns by identifying which generate highest quality leads by professional segment.',
+        chartType: 'Grouped Bar Chart or Matrix',
         dimensions: [
-          { name: 'Campanha Original', description: 'Fonte da primeira interação', source: 'Contatos' },
-          { name: 'Especialidade + Senioridade', description: 'Combinação dos campos de IA', source: 'Contatos' },
-          { name: 'Mês da Campanha', description: 'Período de execução', source: 'Contatos' }
+          { name: 'Original Campaign', description: 'Source of first interaction', source: 'Contacts' },
+          { name: 'Specialty + Seniority', description: 'Combination of AI fields', source: 'Contacts' },
+          { name: 'Campaign Month', description: 'Execution period', source: 'Contacts' }
         ],
         metrics: [
-          { name: 'Custo por Lead Qualificado', description: 'CPL segmentado por perfil', calculation: 'Gasto da Campanha / COUNT(MQLs)' },
-          { name: 'ROI por Segmento', description: 'Retorno sobre investimento', calculation: '(Receita - Custo) / Custo * 100' },
-          { name: 'Taxa de Qualificação', description: 'Lead para MQL', calculation: '(MQLs / Total Leads) * 100' },
-          { name: 'Lifetime Value Médio', description: 'Valor do cliente por perfil', calculation: 'AVG(LTV por segmento)' }
+          { name: 'Cost per Qualified Lead', description: 'CPL segmented by profile', calculation: 'Campaign Spend / COUNT(MQLs)' },
+          { name: 'ROI by Segment', description: 'Return on investment', calculation: '(Revenue - Cost) / Cost * 100' },
+          { name: 'Qualification Rate', description: 'Lead to MQL', calculation: '(MQLs / Total Leads) * 100' },
+          { name: 'Average Lifetime Value', description: 'Customer value by profile', calculation: 'AVG(LTV by segment)' }
         ],
         filters: [
-          'Campanha Original não está vazia',
-          'Data de criação nos últimos 12 meses',
-          'Especialidade e Grau preenchidos'
+          'Original Campaign is not empty',
+          'Created date in last 12 months',
+          'Specialty and Seniority are filled'
         ],
         insights: [
-          'Campanhas mais efetivas por segmento',
-          'Cost per Acquisition (CPA) por perfil profissional',
-          'Canais que geram leads de maior valor',
-          'Segmentos mais lucrativos para investir'
+          'Most effective campaigns by segment',
+          'Cost per Acquisition (CPA) by professional profile',
+          'Channels that generate highest value leads',
+          'Most profitable segments to invest in'
         ]
       }
     }
@@ -149,23 +149,23 @@ const TutorialPage = () => {
   const tips = [
     {
       icon: '💡',
-      title: 'Nomear de forma descritiva',
-      description: 'Use nomes descritivos tanto para o dataset quanto para os campos calculados, facilitando o entendimento para toda a equipe.'
+      title: 'Use Descriptive Names',
+      description: 'Use descriptive names for both the dataset and calculated fields, making it easier for the entire team to understand.'
     },
     {
       icon: '🔐',
-      title: 'Verificar permissões',
-      description: 'A criação de datasets requer uma assinatura do Operations Hub Professional ou Enterprise. Verifique se sua conta possui as permissões necessárias.'
+      title: 'Check Permissions',
+      description: 'Dataset creation requires an Operations Hub Professional or Enterprise subscription. Verify your account has the necessary permissions.'
     },
     {
       icon: '🔄',
-      title: 'Atualizações automáticas',
-      description: 'Lembre-se que alterações no dataset refletem em todos os relatórios baseados nele. Isso é útil para manter tudo atualizado.'
+      title: 'Automatic Updates',
+      description: 'Remember that dataset changes reflect in all reports based on it. This is useful for keeping everything updated.'
     },
     {
       icon: '📊',
-      title: 'Monitorar limites',
-      description: 'Há limites para o número de datasets que podem ser criados, dependendo da sua assinatura do HubSpot. Gerencie seus datasets cuidadosamente.'
+      title: 'Monitor Limits',
+      description: 'There are limits to the number of datasets that can be created, depending on your HubSpot subscription. Manage your datasets carefully.'
     }
   ];
 
@@ -182,12 +182,12 @@ const TutorialPage = () => {
               <BookOpen className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Tutorial HubSpot</h1>
-              <p className="text-purple-100">Crie datasets poderosos com dados enriquecidos</p>
+              <h1 className="text-3xl md:text-4xl font-bold">HubSpot Tutorial</h1>
+              <p className="text-purple-100">Create powerful datasets with enriched data</p>
             </div>
           </div>
           <p className="text-xl md:text-2xl text-purple-100 max-w-4xl leading-relaxed">
-            Aprenda como criar e utilizar conjuntos de dados no HubSpot para aproveitar ao máximo seus leads enriquecidos.
+            Learn how to create and use datasets in HubSpot to maximize your enriched leads.
           </p>
         </div>
       </div>
@@ -197,20 +197,20 @@ const TutorialPage = () => {
         {[
           {
             icon: Database,
-            title: 'Datasets Inteligentes',
-            description: 'Combine múltiplas fontes de dados em análises unificadas',
+            title: 'Smart Datasets',
+            description: 'Combine multiple data sources in unified analyses',
             color: 'from-blue-500 to-blue-600'
           },
           {
             icon: Target,
-            title: 'Segmentação Avançada',
-            description: 'Use especialidades e senioridade para análises precisas',
+            title: 'Advanced Segmentation',
+            description: 'Use specialties and seniority for precise analysis',
             color: 'from-green-500 to-green-600'
           },
           {
             icon: BarChart2,
-            title: 'Relatórios Personalizados',
-            description: 'Crie visualizações que revelam insights únicos',
+            title: 'Custom Reports',
+            description: 'Create visualizations that reveal unique insights',
             color: 'from-purple-500 to-purple-600'
           }
         ].map((feature, index) => {
@@ -234,33 +234,33 @@ const TutorialPage = () => {
             <Database className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">O que é um Dataset no HubSpot?</h2>
-            <p className="text-gray-600">Conceitos fundamentais que você precisa conhecer</p>
+            <h2 className="text-2xl font-bold text-gray-900">What is a Dataset in HubSpot?</h2>
+            <p className="text-gray-600">Fundamental concepts you need to know</p>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Um conjunto de dados (dataset) no HubSpot é uma coleção de propriedades e cálculos
-              preparados para facilitar a criação de relatórios personalizados. Com datasets,
-              você pode combinar diferentes objetos do CRM (contatos, empresas, negócios) em uma
-              única fonte de dados para análise.
+              A dataset in HubSpot is a collection of properties and calculations
+              prepared to facilitate the creation of custom reports. With datasets,
+              you can combine different CRM objects (contacts, companies, deals) into a
+              single data source for analysis.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Os datasets são especialmente úteis quando você quer analisar seus leads enriquecidos
-              em relação a outras entidades no HubSpot, como oportunidades de negócio ou atividades
-              de marketing.
+              Datasets are especially useful when you want to analyze your enriched leads
+              in relation to other entities in HubSpot, such as business opportunities or
+              marketing activities.
             </p>
           </div>
           <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">Benefícios dos Datasets</h3>
+            <h3 className="text-lg font-bold text-gray-900 mb-4">Dataset Benefits</h3>
             <div className="space-y-3">
               {[
-                'Combinar múltiplas fontes de dados',
-                'Criar relatórios personalizados avançados',
-                'Análises cross-objeto automatizadas',
-                'Campos calculados personalizados'
+                'Combine multiple data sources',
+                'Create advanced custom reports',
+                'Automated cross-object analyses',
+                'Custom calculated fields'
               ].map((benefit, index) => (
                 <div key={index} className="flex items-center">
                   <CheckCircle className="h-5 w-5 text-indigo-500 mr-3" />
@@ -279,8 +279,8 @@ const TutorialPage = () => {
             <ArrowRight className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Passo a Passo: Criando um Dataset</h2>
-            <p className="text-gray-600">Guia completo para configurar seu primeiro dataset</p>
+            <h2 className="text-2xl font-bold text-gray-900">Step by Step: Creating a Dataset</h2>
+            <p className="text-gray-600">Complete guide to set up your first dataset</p>
           </div>
         </div>
 
@@ -325,23 +325,23 @@ const TutorialPage = () => {
             <BarChart2 className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Usando o Dataset para Relatórios</h2>
-            <p className="text-gray-600">Como criar relatórios poderosos com seus dados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Using Dataset for Reports</h2>
+            <p className="text-gray-600">How to create powerful reports with your data</p>
           </div>
         </div>
 
         <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-6 mb-6">
           <p className="text-blue-800 font-medium mb-4">
-            Após criar seu dataset, você pode usá-lo para criar relatórios personalizados:
+            After creating your dataset, you can use it to create custom reports:
           </p>
           <ol className="space-y-3 text-blue-700">
             {[
-              'No menu de Relatórios, clique em "Criar relatório personalizado"',
-              'Selecione o seu dataset como fonte de dados',
-              'Escolha o tipo de visualização (tabela, gráfico de barras, pizza, etc.)',
-              'Configure as dimensões e métricas com base nas propriedades disponíveis',
-              'Aplique filtros, como filtrar por especialidade ou grau específicos',
-              'Salve o relatório em um dashboard para acesso regular'
+              'In Reports menu, click "Create custom report"',
+              'Select your dataset as data source',
+              'Choose visualization type (table, bar chart, pie chart, etc.)',
+              'Configure dimensions and metrics based on available properties',
+              'Apply filters, such as filtering by specific specialty or seniority',
+              'Save the report to a dashboard for regular access'
             ].map((step, index) => (
               <li key={index} className="flex items-start">
                 <span className="inline-flex items-center justify-center w-6 h-6 bg-blue-200 rounded-full text-xs font-bold text-blue-800 mr-3 mt-0.5">
@@ -361,8 +361,8 @@ const TutorialPage = () => {
             <Sparkles className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Exemplos de Uso com Leads Enriquecidos</h2>
-            <p className="text-gray-600">Casos práticos para maximizar o valor dos seus dados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Use Cases with Enriched Leads</h2>
+            <p className="text-gray-600">Practical cases to maximize your data value</p>
           </div>
         </div>
 
@@ -380,7 +380,7 @@ const TutorialPage = () => {
                   onClick={() => setSelectedUseCase(index)}
                   className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center justify-center"
                 >
-                  Ver Configuração Detalhada
+                  View Detailed Configuration
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </button>
               </div>
@@ -396,8 +396,8 @@ const TutorialPage = () => {
             <Lightbulb className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Dicas e Boas Práticas</h2>
-            <p className="text-gray-600">Recomendações para maximizar seus resultados</p>
+            <h2 className="text-2xl font-bold text-gray-900">Tips and Best Practices</h2>
+            <p className="text-gray-600">Recommendations to maximize your results</p>
           </div>
         </div>
 
@@ -419,9 +419,9 @@ const TutorialPage = () => {
         <div className="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
           <ExternalLink className="h-8 w-8 text-white" />
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Documentação Oficial do HubSpot</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Official HubSpot Documentation</h2>
         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-          Para informações mais detalhadas e atualizadas sobre datasets no HubSpot, consulte a documentação oficial.
+          For more detailed and updated information about datasets in HubSpot, check the official documentation.
         </p>
         <a
           href="https://knowledge.hubspot.com/reports/create-custom-reports-with-datasets"
@@ -429,7 +429,7 @@ const TutorialPage = () => {
           rel="noopener noreferrer"
           className="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
         >
-          Acessar Documentação
+          Access Documentation
           <ExternalLink className="ml-3 h-5 w-5" />
         </a>
       </div>
@@ -448,7 +448,7 @@ const TutorialPage = () => {
                     </div>
                     <div>
                       <h2 className="text-2xl font-bold text-gray-900">{useCases[selectedUseCase].title}</h2>
-                      <p className="text-gray-600">Configuração Detalhada no HubSpot</p>
+                      <p className="text-gray-600">Detailed HubSpot Configuration</p>
                     </div>
                   </div>
                   <button
@@ -466,7 +466,7 @@ const TutorialPage = () => {
                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
                   <div className="flex items-center mb-4">
                     <Target className="h-6 w-6 text-blue-600 mr-3" />
-                    <h3 className="text-xl font-bold text-gray-900">Objetivo do Relatório</h3>
+                    <h3 className="text-xl font-bold text-gray-900">Report Objective</h3>
                   </div>
                   <p className="text-gray-700 leading-relaxed">{useCases[selectedUseCase].details.objective}</p>
                 </div>
@@ -475,7 +475,7 @@ const TutorialPage = () => {
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
                   <div className="flex items-center mb-4">
                     <PieChart className="h-6 w-6 text-green-600 mr-3" />
-                    <h3 className="text-xl font-bold text-gray-900">Tipo de Visualização Recomendada</h3>
+                    <h3 className="text-xl font-bold text-gray-900">Recommended Visualization Type</h3>
                   </div>
                   <p className="text-gray-700 font-medium">{useCases[selectedUseCase].details.chartType}</p>
                 </div>
@@ -485,7 +485,7 @@ const TutorialPage = () => {
                   <div className="bg-gradient-to-r from-purple-600 to-purple-700 px-6 py-4">
                     <div className="flex items-center">
                       <BarChart2 className="h-6 w-6 text-white mr-3" />
-                      <h3 className="text-xl font-bold text-white">Dimensões (Eixos/Categorias)</h3>
+                      <h3 className="text-xl font-bold text-white">Dimensions (Axes/Categories)</h3>
                     </div>
                   </div>
                   <div className="p-6">
@@ -497,7 +497,7 @@ const TutorialPage = () => {
                             <h4 className="font-bold text-gray-900 mb-1">{dimension.name}</h4>
                             <p className="text-gray-700 text-sm mb-2">{dimension.description}</p>
                             <span className="inline-block bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">
-                              Fonte: {dimension.source}
+                              Source: {dimension.source}
                             </span>
                           </div>
                         </div>
@@ -511,7 +511,7 @@ const TutorialPage = () => {
                   <div className="bg-gradient-to-r from-orange-600 to-orange-700 px-6 py-4">
                     <div className="flex items-center">
                       <TrendingUp className="h-6 w-6 text-white mr-3" />
-                      <h3 className="text-xl font-bold text-white">Métricas (Valores/KPIs)</h3>
+                      <h3 className="text-xl font-bold text-white">Metrics (Values/KPIs)</h3>
                     </div>
                   </div>
                   <div className="p-6">
@@ -537,7 +537,7 @@ const TutorialPage = () => {
                   <div className="bg-gradient-to-r from-teal-600 to-teal-700 px-6 py-4">
                     <div className="flex items-center">
                       <Filter className="h-6 w-6 text-white mr-3" />
-                      <h3 className="text-xl font-bold text-white">Filtros Recomendados</h3>
+                      <h3 className="text-xl font-bold text-white">Recommended Filters</h3>
                     </div>
                   </div>
                   <div className="p-6">
@@ -556,7 +556,7 @@ const TutorialPage = () => {
                 <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200">
                   <div className="flex items-center mb-4">
                     <Lightbulb className="h-6 w-6 text-yellow-600 mr-3" />
-                    <h3 className="text-xl font-bold text-gray-900">Insights Que Você Obterá</h3>
+                    <h3 className="text-xl font-bold text-gray-900">Insights You'll Get</h3>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {useCases[selectedUseCase].details.insights.map((insight, index) => (
@@ -574,7 +574,7 @@ const TutorialPage = () => {
                     onClick={closeModal}
                     className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
-                    Entendi, vou implementar!
+                    Got it, I'll implement this!
                   </button>
                 </div>
               </div>

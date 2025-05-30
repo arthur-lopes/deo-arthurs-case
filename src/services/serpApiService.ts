@@ -192,24 +192,24 @@ const analyzeSearchResultsWithOpenAI = async (
         messages: [
           {
             role: 'system',
-            content: `Você é um especialista em análise de resultados de busca para empresas americanas. Sua função é sintetizar informações REAIS encontradas nos resultados do Google.
+            content: `You are an expert in search results analysis for American companies. Your function is to synthesize REAL information found in Google results.
 
-REGRAS CRÍTICAS:
-- APENAS extraia informações que estão EXPLICITAMENTE mencionadas nos resultados
-- NUNCA invente nomes, cargos, telefones ou emails
-- Se não encontrar informações de contato verificáveis, retorne lista vazia
-- Foque em empresas dos Estados Unidos
-- Seja extremamente conservador - prefira retornar vazio a inventar
-- Use apenas informações que aparecem em múltiplas fontes confiáveis
+CRITICAL RULES:
+- ONLY extract information that is EXPLICITLY mentioned in the results
+- NEVER invent names, positions, phones or emails
+- If you don't find verifiable contact information, return empty list
+- Focus on companies in the United States
+- Be extremely conservative - prefer returning empty rather than inventing
+- Use only information that appears in multiple reliable sources
 
-PROCESSO:
-1. Analise todos os resultados de busca fornecidos
-2. Identifique informações consistentes sobre a empresa
-3. Procure por informações de liderança/executivos REAIS
-4. Extraia apenas dados que são mencionados explicitamente
-5. Valide informações cruzando múltiplas fontes
+PROCESS:
+1. Analyze all provided search results
+2. Identify consistent information about the company
+3. Look for REAL leadership/executive information
+4. Extract only data that is explicitly mentioned
+5. Validate information by cross-referencing multiple sources
 
-Retorne apenas JSON válido sem formatação markdown.`
+Return only valid JSON without markdown formatting.`
           },
           {
             role: 'user',
@@ -289,61 +289,61 @@ Retorne apenas JSON válido sem formatação markdown.`
 const createSearchAnalysisPrompt = (domain: string, searchResults: SerpSearchResult[]): string => {
   const resultsText = searchResults
     .map((result, index) => `
-RESULTADO ${index + 1}:
-Título: ${result.title}
+RESULT ${index + 1}:
+Title: ${result.title}
 URL: ${result.link}
-Descrição: ${result.snippet}
+Description: ${result.snippet}
 ---`)
     .join('\n');
 
   return `
-INSTRUÇÃO: Analise os resultados de busca do Google sobre "${domain}" e extraia APENAS informações REAIS que são mencionadas explicitamente nos resultados.
+INSTRUCTION: Analyze the Google search results about "${domain}" and extract ONLY REAL information that is explicitly mentioned in the results.
 
-REGRAS OBRIGATÓRIAS:
-1. APENAS use informações que estão CLARAMENTE mencionadas nos resultados de busca
-2. NUNCA invente nomes, cargos, telefones ou emails
-3. Se não encontrar informações de contato verificáveis, retorne leads: []
-4. Procure por informações de liderança, executivos, fundadores
-5. Valide informações que aparecem em múltiplas fontes
-6. Foque em empresas americanas
+MANDATORY RULES:
+1. ONLY use information that is CLEARLY mentioned in the search results
+2. NEVER invent names, positions, phones or emails
+3. If you don't find verifiable contact information, return leads: []
+4. Look for leadership, executive, founder information
+5. Validate information that appears in multiple sources
+6. Focus on American companies
 
-RESULTADOS DE BUSCA:
+SEARCH RESULTS:
 ${resultsText}
 
-FORMATO DE RESPOSTA (JSON apenas, sem markdown):
+RESPONSE FORMAT (JSON only, no markdown):
 {
   "companyInfo": {
-    "name": "Nome da empresa mencionado nos resultados ou null",
-    "description": "Descrição encontrada nos resultados ou null", 
-    "industry": "Setor identificado nos resultados ou null",
-    "size": "Tamanho da empresa se mencionado ou null",
-    "location": "Localização se mencionada nos resultados ou null"
+    "name": "Company name mentioned in results or null",
+    "description": "Description found in results or null", 
+    "industry": "Industry identified in results or null",
+    "size": "Company size if mentioned or null",
+    "location": "Location if mentioned in results or null"
   },
   "leads": [
-    // APENAS se você encontrar informações REAIS de pessoas nos resultados
-    // Caso contrário, deixe array vazio: []
+    // ONLY if you find REAL information about people in the results
+    // Otherwise, leave array empty: []
     {
-      "nome": "Nome REAL mencionado nos resultados",
-      "titulo": "Cargo REAL mencionado nos resultados", 
-      "telefone": "Telefone REAL encontrado ou null",
-      "email": "Email REAL encontrado ou null",
-      "especialidade": "Especialidade baseada no cargo encontrado",
-      "grau": "Nível hierárquico baseado no cargo encontrado"
+      "nome": "REAL name mentioned in results",
+      "titulo": "REAL position mentioned in results", 
+      "telefone": "REAL phone found or null",
+      "email": "REAL email found or null",
+      "especialidade": "Specialty based on found position",
+      "grau": "Hierarchical level based on found position"
     }
   ]
 }
 
-ESPECIALIDADES VÁLIDAS (apenas se identificadas):
+VALID SPECIALTIES (only if identified):
 - Technology, Healthcare, Finance, Marketing, Sales, Operations, Legal, Real Estate
 
-GRAUS VÁLIDOS (baseados em cargos encontrados):
+VALID LEVELS (based on found positions):
 - C-Level, VP/Director, Manager, Senior, Specialist, Associate
 
-IMPORTANTE: Se você não conseguir encontrar informações REAIS de contato nos resultados de busca do "${domain}", retorne:
+IMPORTANT: If you cannot find REAL contact information in the search results for "${domain}", return:
 {
   "companyInfo": {
-    "name": "Nome encontrado nos resultados",
-    "description": "Descrição encontrada",
+    "name": "Name found in results",
+    "description": "Description found",
     "industry": null,
     "size": null,
     "location": null
@@ -351,7 +351,7 @@ IMPORTANTE: Se você não conseguir encontrar informações REAIS de contato nos
   "leads": []
 }
 
-Analise agora os resultados de busca e extraia apenas informações REAIS e verificáveis que são mencionadas explicitamente.
+Now analyze the search results and extract only REAL and verifiable information that is explicitly mentioned.
 `;
 };
 

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { FileUp, Home, BarChart2, GraduationCap, LogOut, BookOpen, Globe, Mail, Sparkles } from 'lucide-react';
+import { FileUp, Home, BarChart2, GraduationCap, LogOut, BookOpen, Globe, Mail, Sparkles, Code, ExternalLink } from 'lucide-react';
 import { cn } from '../utils/cn';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
@@ -15,24 +15,26 @@ const Layout = ({ children }: LayoutProps) => {
   
   const navItems = [
     { path: '/', label: 'Dashboard', icon: Home },
-    { path: '/upload', label: 'Processar CSV', icon: FileUp },
-    { path: '/domain', label: 'Buscar Domínio', icon: Globe },
-    { path: '/email', label: 'Enriquecer Email', icon: Mail },
-    { path: '/results', label: 'Resultados', icon: BarChart2 },
-    { path: '/tutorial', label: 'Tutorial HubSpot', icon: GraduationCap },
-    { path: '/course', label: 'Academia DEO', icon: BookOpen },
+    { path: '/upload', label: 'Process CSV', icon: FileUp },
+    { path: '/domain', label: 'Domain Search', icon: Globe },
+    { path: '/email', label: 'Email Enrichment', icon: Mail },
+    { path: '/results', label: 'Results', icon: BarChart2 },
+    { path: '/api-documentation', label: 'API Docs', icon: Code },
+    { path: '/hubspot-integration', label: 'HubSpot Integration', icon: ExternalLink },
+    { path: '/tutorial', label: 'HubSpot Tutorial', icon: GraduationCap },
+    { path: '/course', label: 'DEO Academy', icon: BookOpen },
   ];
 
   const handleLogout = () => {
     logout();
-    toast.success('Logout realizado com sucesso!');
+    toast.success('Logged out successfully!');
   };
 
   return (
     <div className="min-h-screen flex bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       {/* Sidebar */}
       <aside className="hidden md:flex w-72 flex-col bg-white/80 backdrop-blur-xl border-r border-white/20 shadow-2xl">
-        {/* Header com Branding */}
+        {/* Header with Branding */}
         <div className="p-6 border-b border-gradient-to-r from-blue-100 to-indigo-100">
           <div className="flex items-center gap-3">
             <div className="relative">
@@ -87,7 +89,7 @@ const Layout = ({ children }: LayoutProps) => {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900">{user?.username}</p>
-              <p className="text-xs text-gray-500">Analista de Dados</p>
+              <p className="text-xs text-gray-500">Data Analyst</p>
             </div>
           </div>
           <button
@@ -95,7 +97,7 @@ const Layout = ({ children }: LayoutProps) => {
             className="flex items-center w-full px-4 py-3 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-xl transition-all duration-200 group"
           >
             <LogOut className="mr-3 h-4 w-4 group-hover:scale-110 transition-transform" />
-            Encerrar Sessão
+            Sign Out
           </button>
         </div>
       </aside>
@@ -108,7 +110,7 @@ const Layout = ({ children }: LayoutProps) => {
           </div>
           <div>
             <h1 className="text-lg font-bold text-gray-900">DEO</h1>
-            <p className="text-xs text-gray-500">Arthur Case</p>
+            <p className="text-xs text-gray-500">Arthur's Case</p>
           </div>
         </div>
         <button
@@ -116,7 +118,7 @@ const Layout = ({ children }: LayoutProps) => {
           className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
         >
           <LogOut className="h-4 w-4" />
-          Sair
+          Sign Out
         </button>
       </div>
 

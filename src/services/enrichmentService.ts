@@ -124,7 +124,7 @@ const enrichWithOpenAI = async (lead: Lead): Promise<Lead> => {
         messages: [
           {
             role: 'system',
-            content: 'Você é um especialista em classificação de profissionais e enriquecimento de dados B2B. Analise as informações do lead e determine a especialidade e grau de senioridade mais apropriados.'
+            content: 'You are an expert in professional classification and B2B data enrichment. Analyze the lead information and determine the most appropriate specialty and seniority level.'
           },
           {
             role: 'user',
@@ -160,37 +160,37 @@ const enrichWithOpenAI = async (lead: Lead): Promise<Lead> => {
 
 const createEnrichmentPrompt = (lead: Lead): string => {
   return `
-Analise as informações do seguinte lead e determine a especialidade e grau de senioridade:
+Analyze the information of the following lead and determine the specialty and seniority level:
 
-Nome: ${lead.nome}
-Empresa: ${lead.empresa}
-Título/Cargo: ${lead.titulo}
-Especialidade Atual: ${lead.especialidade || 'Não definido'}
-Grau Atual: ${lead.grau || 'Não definido'}
+Name: ${lead.nome}
+Company: ${lead.empresa}
+Title/Position: ${lead.titulo}
+Current Specialty: ${lead.especialidade || 'Not defined'}
+Current Level: ${lead.grau || 'Not defined'}
 
-Por favor, retorne um JSON no seguinte formato:
+Please return a JSON in the following format:
 {
-  "especialidade": "Especialidade identificada",
-  "grau": "Grau de senioridade"
+  "especialidade": "Identified specialty",
+  "grau": "Seniority level"
 }
 
-Regras para especialidades:
-- Para dentistas: Ortodontia, Odontopediatria, Odontologia Estética, Clínica Geral
-- Para tecnologia: Tecnologia
-- Para marketing: Marketing
-- Para vendas: Vendas
-- Para finanças: Finanças
-- Para outros: Outros
+Rules for specialties:
+- For dentists: Orthodontics, Pediatric Dentistry, Cosmetic Dentistry, General Practice
+- For technology: Technology
+- For marketing: Marketing
+- For sales: Sales
+- For finance: Finance
+- For others: Others
 
-Regras para graus de senioridade:
-- Proprietário (para donos/CEOs)
-- Diretor (para diretores/heads)
-- Gerente (para gerentes/managers)
-- Sênior (para seniores/leads)
-- Especialista (para especialistas/doutores)
-- Profissional (para outros profissionais)
+Rules for seniority levels:
+- Owner (for owners/CEOs)
+- Director (for directors/heads)
+- Manager (for managers)
+- Senior (for seniors/leads)
+- Specialist (for specialists/doctors)
+- Professional (for other professionals)
 
-Analise o título/cargo para determinar o grau apropriado.
+Analyze the title/position to determine the appropriate level.
 `;
 };
 
@@ -200,10 +200,10 @@ const enrichWithRules = async (lead: Lead): Promise<Lead> => {
   
   // Prepare input for analysis to determine specialty and seniority
   const leadInfo = `
-    Nome: ${lead.nome}
-    Empresa: ${lead.empresa}
-    Título/Cargo: ${lead.titulo}
-    Especialidade Atual: ${lead.especialidade}
+    Name: ${lead.nome}
+    Company: ${lead.empresa}
+    Title/Position: ${lead.titulo}
+    Current Specialty: ${lead.especialidade}
   `.toLowerCase();
   
   let especialidade = lead.especialidade || '';
@@ -216,41 +216,41 @@ const enrichWithRules = async (lead: Lead): Promise<Lead> => {
     
     if (!especialidade) {
       if (leadInfo.includes('orthodontics')) {
-        especialidade = 'Ortodontia';
+        especialidade = 'Orthodontics';
       } else if (leadInfo.includes('pediatric') || leadInfo.includes('pediatric dentistry')) {
-        especialidade = 'Odontopediatria';
+        especialidade = 'Pediatric Dentistry';
       } else if (leadInfo.includes('cosmetic') || leadInfo.includes('cosmetic dentistry')) {
-        especialidade = 'Odontologia Estética';
+        especialidade = 'Cosmetic Dentistry';
       } else if (leadInfo.includes('general dentistry')) {
-        especialidade = 'Clínica Geral';
+        especialidade = 'General Practice';
       } else {
-        especialidade = 'Odontologia';
+        especialidade = 'Dentistry';
       }
     }
     
     if (!grau) {
       if (leadInfo.includes('owner') || leadInfo.includes('ceo') || leadInfo.includes('proprietário')) {
-        grau = 'Proprietário';
+        grau = 'Owner';
       } else if (leadInfo.includes('head doc') || leadInfo.includes('head') || leadInfo.includes('chief')) {
-        grau = 'Chefe';
+        grau = 'Chief';
       } else if (leadInfo.includes('lead dentist') || leadInfo.includes('senior') || leadInfo.includes('sênior')) {
-        grau = 'Sênior';
+        grau = 'Senior';
       } else if (leadInfo.includes('doctor') || leadInfo.includes('dentist') || leadInfo.includes('doutor')) {
-        grau = 'Especialista';
+        grau = 'Specialist';
       } else {
-        grau = 'Profissional';
+        grau = 'Professional';
       }
     }
   } else if (leadInfo.includes('engenheiro') || leadInfo.includes('desenvolvedor') || leadInfo.includes('engineer') || leadInfo.includes('developer')) {
-    if (!especialidade) especialidade = 'Tecnologia';
+    if (!especialidade) especialidade = 'Technology';
     
     if (!grau) {
       if (leadInfo.includes('sênior') || leadInfo.includes('senior') || leadInfo.includes('líder') || leadInfo.includes('lead')) {
-        grau = 'Sênior';
+        grau = 'Senior';
       } else if (leadInfo.includes('júnior') || leadInfo.includes('junior')) {
-        grau = 'Júnior';
+        grau = 'Junior';
       } else {
-        grau = 'Pleno';
+        grau = 'Mid-level';
       }
     }
   } else if (leadInfo.includes('marketing')) {
@@ -258,42 +258,42 @@ const enrichWithRules = async (lead: Lead): Promise<Lead> => {
     
     if (!grau) {
       if (leadInfo.includes('diretor') || leadInfo.includes('director') || leadInfo.includes('head')) {
-        grau = 'Diretor';
+        grau = 'Director';
       } else if (leadInfo.includes('gerente') || leadInfo.includes('manager')) {
-        grau = 'Gerente';
+        grau = 'Manager';
       } else {
-        grau = 'Analista';
+        grau = 'Analyst';
       }
     }
   } else if (leadInfo.includes('vendas') || leadInfo.includes('comercial') || leadInfo.includes('sales')) {
-    if (!especialidade) especialidade = 'Vendas';
+    if (!especialidade) especialidade = 'Sales';
     
     if (!grau) {
       if (leadInfo.includes('diretor') || leadInfo.includes('director')) {
-        grau = 'Diretor';
+        grau = 'Director';
       } else if (leadInfo.includes('gerente') || leadInfo.includes('manager')) {
-        grau = 'Gerente';
+        grau = 'Manager';
       } else {
-        grau = 'Representante';
+        grau = 'Representative';
       }
     }
   } else if (leadInfo.includes('financeiro') || leadInfo.includes('contabilidade') || leadInfo.includes('finance')) {
-    if (!especialidade) especialidade = 'Finanças';
+    if (!especialidade) especialidade = 'Finance';
     
     if (!grau) {
       if (leadInfo.includes('diretor') || leadInfo.includes('director') || leadInfo.includes('cfo')) {
-        grau = 'Diretor';
+        grau = 'Director';
       } else if (leadInfo.includes('gerente') || leadInfo.includes('manager')) {
-        grau = 'Gerente';
+        grau = 'Manager';
       } else {
-        grau = 'Analista';
+        grau = 'Analyst';
       }
     }
   }
   
   // If we still don't have values, set defaults
-  if (!especialidade) especialidade = 'Outros';
-  if (!grau) grau = 'Não Especificado';
+  if (!especialidade) especialidade = 'Others';
+  if (!grau) grau = 'Not Specified';
   
   // Return enriched lead
   return {
