@@ -6,11 +6,12 @@
   <img src="https://img.shields.io/badge/TypeScript-5.5.3-3178C6?style=for-the-badge&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Vite-5.4.2-646CFF?style=for-the-badge&logo=vite" alt="Vite" />
   <img src="https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge&logo=render" alt="Render" />
+  <img src="https://img.shields.io/badge/AI-OpenAI-000000?style=for-the-badge&logo=openai" alt="OpenAI" />
 </div>
 
 ## 📋 Description
 
-Advanced data enrichment platform that transforms leads into qualified prospects using AI and multiple data sources. Built with React and Node.js, featuring intelligent deduplication, domain enrichment, and HubSpot integration.
+Advanced AI-powered data enrichment platform that transforms raw leads into qualified prospects using multiple data sources and intelligent processing. Built with React and Node.js, featuring intelligent deduplication, domain enrichment, and seamless HubSpot integration.
 
 ## ✨ Key Features
 
@@ -116,7 +117,10 @@ The project is optimized for Render deployment with automatic configuration.
 4. Deploy both services
 ```
 
-**📖 Complete Deploy Guide**: [DEPLOY_RENDER.md](./DEPLOY_RENDER.md)
+**📖 Complete Deploy Guides**: 
+- [English Guide](./DEPLOYMENT_GUIDE_EN.md)
+- [Portuguese Guide](./GUIA_DEPLOY_RENDER.md)
+- [Technical Documentation](./SYSTEM_DOCUMENTATION.md)
 
 ### Production URLs
 - **Frontend**: `https://deo-frontend.onrender.com`
@@ -291,8 +295,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [Full API Documentation](./docs/API.md)
-- **Deploy Guide**: [Render Deployment](./DEPLOY_RENDER.md)
+- **Complete Documentation**: [System Documentation](./SYSTEM_DOCUMENTATION.md)
+- **Deployment Guide**: [Render Deployment](./DEPLOYMENT_GUIDE_EN.md)  
+- **Technical Checklist**: [Deployment Checklist](./DEPLOYMENT_CHECKLIST.md)
 - **Issues**: GitHub Issues
 - **Email**: support@deo-platform.com
 
@@ -300,4 +305,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
   <strong>🎉 Ready to transform your lead data? Get started with DEO today!</strong>
+  
+  **Complete Technical Documentation**: [SYSTEM_DOCUMENTATION.md](./SYSTEM_DOCUMENTATION.md)
 </div> 

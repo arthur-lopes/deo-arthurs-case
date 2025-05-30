@@ -20,12 +20,28 @@ interface BackendResponse {
   error?: string;
 }
 
+interface ApiStatus {
+  openai: boolean;
+  serpapi: boolean;
+  hunter: boolean;
+  apollo: boolean;
+  clearbit: boolean;
+}
+
+interface HealthStatus {
+  status: 'healthy' | 'degraded' | 'down';
+  timestamp: string;
+  version: string;
+  uptime: number;
+  apis: ApiStatus;
+}
+
 class BackendApiService {
   private baseUrl: string;
   private isAvailable: boolean;
 
   constructor() {
-    this.baseUrl = 'http://localhost:3001';
+    this.baseUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
     this.isAvailable = false;
   }
 

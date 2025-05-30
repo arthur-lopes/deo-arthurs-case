@@ -64,7 +64,7 @@ app.post('/api/hubspot/webhook', async (req, res) => {
         console.log(\`Enriching contact \${objectId} for domain: \${companyDomain}\`);
         
         // Call our enrichment API
-        const enrichmentResponse = await fetch('http://localhost:3001/api/enrichment/domain', {
+        const enrichmentResponse = await fetch(\`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'}/api/enrichment/domain\`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -241,7 +241,7 @@ cron.schedule('*/30 * * * *', async () => {
       
       if (companyDomain) {
         // Enrich data
-        const enrichmentResponse = await fetch('http://localhost:3001/api/enrichment/domain', {
+        const enrichmentResponse = await fetch(\`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'}/api/enrichment/domain\`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

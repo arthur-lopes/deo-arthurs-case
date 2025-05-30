@@ -262,7 +262,7 @@ RETURN ONLY A JSON in the following format:
 }
 `;
 
-      const response = await fetch('http://localhost:3001/api/openai/analyze', {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001'}/api/openai/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

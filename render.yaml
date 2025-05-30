@@ -41,7 +41,7 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_BACKEND_URL
-        value: https://deo-backend.onrender.com
+        value: https://deo-backend-30ep.onrender.com
       - key: VITE_OPENAI_API_KEY
         sync: false
       - key: VITE_SERPAPI_KEY
