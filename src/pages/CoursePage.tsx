@@ -524,31 +524,6 @@ const CoursePage = () => {
           </div>
         </div>
       </div>
-
-      {/* Program Commitment */}
-      <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 text-center">
-        <div className="max-w-3xl mx-auto">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-600 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <TrendingUp className="h-8 w-8 text-white" />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Career?</h2>
-          <p className="text-gray-600 mb-8 text-lg">
-            This is a development program, not a sales course. The focus is on building expertise 
-            and strategic thinking capabilities that will serve you throughout your career as a 
-            HubSpot administrator and revenue operations professional.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-bold py-4 px-8 rounded-2xl text-lg border border-gray-300">
-              <BookOpen className="h-5 w-5" />
-              Professional Development Program
-            </div>
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-              <GraduationCap className="h-5 w-5" />
-              Begin Your Journey
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

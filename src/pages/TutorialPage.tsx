@@ -424,7 +424,7 @@ const TutorialPage = () => {
           For more detailed and updated information about datasets in HubSpot, check the official documentation.
         </p>
         <a
-          href="https://knowledge.hubspot.com/reports/create-custom-reports-with-datasets"
+          href="https://knowledge.hubspot.com/data-management/create-and-use-datasets"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"

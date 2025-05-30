@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       // In a real app, this would be an API call
       // For now, we'll simulate with hardcoded credentials
-      if (username === 'admin' && password === 'admin123') {
+      if (username === 'deo' && password === 'case123') {
         const userData = { username };
         const token = 'mock-jwt-token-' + Date.now();
         
