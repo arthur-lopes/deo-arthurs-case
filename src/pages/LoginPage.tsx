@@ -152,33 +152,6 @@ const LoginPage = () => {
                 </div>
               </form>
 
-              {/* Test Credentials */}
-              <div className="mt-8">
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-white/20" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-4 bg-transparent text-gray-300">Credenciais de teste</span>
-                  </div>
-                </div>
-
-                <div className="mt-6 p-4 bg-white/5 border border-white/10 rounded-2xl">
-                  <div className="space-y-2 text-center">
-                    <div className="flex items-center justify-center">
-                      <span className="text-gray-300 mr-2">Usuário:</span>
-                      <span className="font-mono bg-blue-600/20 text-blue-300 px-3 py-1 rounded-lg font-medium">admin</span>
-                    </div>
-                    <div className="flex items-center justify-center">
-                      <span className="text-gray-300 mr-2">Senha:</span>
-                      <span className="font-mono bg-blue-600/20 text-blue-300 px-3 py-1 rounded-lg font-medium">admin123</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
           {/* Features Panel - Hidden on mobile */}
           <div className="hidden lg:block lg:w-1/2 lg:pl-12">
             <div className="bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 p-8 h-full">

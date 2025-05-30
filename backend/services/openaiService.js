@@ -1,19 +1,28 @@
 const axios = require('axios');
+const { Configuration, OpenAIApi } = require('openai');
+const { devLog, errorLog, successLog } = require('../utils/logger');
 
 class OpenAIService {
   constructor() {
     this.apiKey = process.env.OPENAI_API_KEY;
     this.baseUrl = 'https://api.openai.com/v1/chat/completions';
+
+    // Configuration
+    const configuration = new Configuration({
+      apiKey: this.apiKey,
+    });
+
+    this.openai = new OpenAIApi(configuration);
   }
 
   async enrichDomain(domain) {
-    console.log(`🤖 Starting OpenAI enrichment for: ${domain}`);
-
-    if (!this.apiKey || this.apiKey === 'sk-your-openai-api-key-here') {
-      throw new Error('OpenAI API key not configured');
-    }
-
     try {
+      devLog(`🤖 Starting OpenAI enrichment for: ${domain}`);
+
+      if (!this.apiKey || this.apiKey === 'sk-your-openai-api-key-here') {
+        throw new Error('OpenAI API key not configured');
+      }
+
       const prompt = this.createEnrichmentPrompt(domain);
       
       const response = await axios.post(this.baseUrl, {
@@ -64,7 +73,7 @@ Retorne apenas JSON válido sem formatação markdown.`
         
         result = JSON.parse(responseContent.trim());
       } catch (parseError) {
-        console.error('❌ Error parsing OpenAI response:', parseError);
+        errorLog('Error parsing OpenAI response:', parseError);
         throw new Error('Invalid JSON response from OpenAI');
       }
 
@@ -83,7 +92,7 @@ Retorne apenas JSON válido sem formatação markdown.`
         processedAt: new Date().toISOString()
       }));
 
-      console.log(`✅ OpenAI found ${leads.length} leads for: ${domain}`);
+      successLog(`OpenAI found ${leads.length} leads for: ${domain}`);
 
       return {
         success: true,
@@ -98,7 +107,7 @@ Retorne apenas JSON válido sem formatação markdown.`
       };
 
     } catch (error) {
-      console.error(`❌ OpenAI enrichment failed for ${domain}:`, error.message);
+      errorLog(`OpenAI enrichment failed for ${domain}:`, error.message);
       throw error;
     }
   }
@@ -171,7 +180,7 @@ Analise agora o domínio "${domain}" e forneça apenas informações REAIS e ver
   }
 
   async analyzeText(prompt, maxTokens = 500) {
-    console.log(`🤖 Starting OpenAI text analysis...`);
+    devLog(`🤖 Starting OpenAI text analysis...`);
 
     if (!this.apiKey || this.apiKey === 'sk-your-openai-api-key-here') {
       throw new Error('OpenAI API key not configured');
@@ -204,7 +213,7 @@ Analise agora o domínio "${domain}" e forneça apenas informações REAIS e ver
       const tokensUsed = response.data.usage?.total_tokens || 0;
       const model = response.data.model || 'gpt-4o-mini';
 
-      console.log(`✅ OpenAI text analysis completed (${tokensUsed} tokens)`);
+      successLog(`OpenAI text analysis completed (${tokensUsed} tokens)`);
 
       return {
         success: true,
@@ -214,7 +223,7 @@ Analise agora o domínio "${domain}" e forneça apenas informações REAIS e ver
       };
 
     } catch (error) {
-      console.error(`❌ OpenAI text analysis failed:`, error.message);
+      errorLog(`OpenAI text analysis failed:`, error.message);
       return {
         success: false,
         error: error.message,

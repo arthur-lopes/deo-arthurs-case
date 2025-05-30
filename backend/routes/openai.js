@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const { Configuration, OpenAIApi } = require('openai');
 const openaiService = require('../services/openaiService');
+const { devLog, errorLog } = require('../utils/logger');
 
 // Generic OpenAI analysis endpoint
 router.post('/analyze', async (req, res) => {
   try {
-    const { prompt, maxTokens = 500 } = req.body;
+    const { prompt, maxTokens = 500, model = 'gpt-3.5-turbo' } = req.body;
     
     if (!prompt || typeof prompt !== 'string') {
       return res.status(400).json({
@@ -15,7 +17,7 @@ router.post('/analyze', async (req, res) => {
       });
     }
 
-    console.log(`🤖 Starting OpenAI analysis...`);
+    devLog(`🤖 Starting OpenAI analysis...`);
 
     // Call OpenAI service with custom prompt
     const result = await openaiService.analyzeText(prompt, maxTokens);
@@ -39,7 +41,7 @@ router.post('/analyze', async (req, res) => {
     });
 
   } catch (error) {
-    console.error(`❌ OpenAI analysis failed:`, error);
+    errorLog(`❌ OpenAI analysis failed:`, error);
     
     res.status(500).json({
       success: false,

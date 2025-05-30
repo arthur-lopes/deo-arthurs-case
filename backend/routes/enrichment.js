@@ -8,15 +8,16 @@ const webScrapingService = require('../services/webScrapingService');
 const externalApiService = require('../services/externalApiService');
 const hybridEnrichmentService = require('../services/hybridEnrichmentService');
 const emailEnrichmentService = require('../services/emailEnrichmentService');
+const { devLog, errorLog, successLog, progressLog } = require('../utils/logger');
 
-// Timeout configuration
-const ENRICHMENT_TIMEOUT = 120000; // 120 seconds total timeout - aligned with frontend timeout
+// Configuration
+const ENRICHMENT_TIMEOUT = 120000; // 2 minutes for domain enrichment
 
 // Main domain enrichment endpoint
 router.post('/domain', validateDomain, getCachedResult, async (req, res) => {
   try {
     const { domain } = req.body;
-    console.log(`🔍 Starting enrichment for domain: ${domain}`);
+    devLog(`🔍 Starting enrichment for domain: ${domain}`);
 
     // Single timeout with proper error handling
     const result = await Promise.race([
@@ -31,7 +32,7 @@ router.post('/domain', validateDomain, getCachedResult, async (req, res) => {
     res.json(result);
 
   } catch (error) {
-    console.error(`❌ Domain enrichment failed for ${req.body.domain}:`, error.message);
+    errorLog(`❌ Domain enrichment failed for ${req.body.domain}:`, error.message);
     
     // Ensure we don't crash the server - always return a proper HTTP response
     if (!res.headersSent) {
@@ -60,7 +61,7 @@ async function performEnrichment(domain, req) {
   try {
     // 1. Try Hybrid Enrichment first (SerpAPI + Web Scraping + OpenAI)
     try {
-      console.log(`🔄 Trying hybrid enrichment (SerpAPI + Web Scraping) for: ${domain}`);
+      progressLog(`Trying hybrid enrichment (SerpAPI + Web Scraping) for: ${domain}`);
       
       // Give hybrid enrichment 100 seconds
       const hybridPromise = hybridEnrichmentService.enrichDomain(domain);
@@ -71,20 +72,20 @@ async function performEnrichment(domain, req) {
       result = await Promise.race([hybridPromise, hybridTimeout]);
       if (result.success && result.leads.length > 0) {
         source = 'hybrid';
-        console.log(`✅ Hybrid enrichment found ${result.leads.length} leads for: ${domain}`);
+        successLog(`Hybrid enrichment found ${result.leads.length} leads for: ${domain}`);
       } else {
-        console.log(`ℹ️ Hybrid enrichment found no data for: ${domain}`);
+        devLog(`ℹ️ Hybrid enrichment found no data for: ${domain}`);
         result = null;
       }
     } catch (hybridError) {
-      console.log(`❌ Hybrid enrichment failed for ${domain}: ${hybridError.message}`);
+      devLog(`❌ Hybrid enrichment failed for ${domain}: ${hybridError.message}`);
       result = null;
     }
 
-    // 2. Try OpenAI direct analysis if hybrid failed
+    // 2. If hybrid enrichment didn't work, try direct OpenAI analysis
     if (!result) {
       try {
-        console.log(`🤖 Trying OpenAI direct analysis for: ${domain}`);
+        progressLog(`Trying OpenAI direct analysis for: ${domain}`);
         const openaiPromise = openaiService.enrichDomain(domain);
         const openaiTimeout = new Promise((_, reject) => {
           setTimeout(() => reject(new Error('OpenAI timeout')), 8000);
@@ -93,20 +94,20 @@ async function performEnrichment(domain, req) {
         result = await Promise.race([openaiPromise, openaiTimeout]);
         if (result.success && result.leads.length > 0) {
           source = 'openai';
-          console.log(`✅ OpenAI found ${result.leads.length} leads for: ${domain}`);
+          successLog(`OpenAI found ${result.leads.length} leads for: ${domain}`);
         } else {
-          console.log(`ℹ️ OpenAI found no data for: ${domain}`);
+          devLog(`ℹ️ OpenAI found no data for: ${domain}`);
           result = null;
         }
       } catch (error) {
-        console.log(`❌ OpenAI failed for ${domain}:`, error.message);
+        devLog(`❌ OpenAI failed for ${domain}:`, error.message);
       }
     }
 
-    // 3. Try External APIs if all else failed
+    // 3. If OpenAI didn't work, try external APIs as last resort
     if (!result) {
       try {
-        console.log(`🔌 Trying external APIs for: ${domain}`);
+        progressLog(`Trying external APIs for: ${domain}`);
         const externalPromise = externalApiService.enrichDomain(domain);
         const externalTimeout = new Promise((_, reject) => {
           setTimeout(() => reject(new Error('External APIs timeout')), 8000);
@@ -115,19 +116,19 @@ async function performEnrichment(domain, req) {
         result = await Promise.race([externalPromise, externalTimeout]);
         if (result.success && result.leads.length > 0) {
           source = 'external';
-          console.log(`✅ External APIs found ${result.leads.length} leads for: ${domain}`);
+          successLog(`External APIs found ${result.leads.length} leads for: ${domain}`);
         } else {
-          console.log(`ℹ️ External APIs found no data for: ${domain}`);
+          devLog(`ℹ️ External APIs found no data for: ${domain}`);
           result = null;
         }
       } catch (error) {
-        console.log(`❌ External APIs failed for ${domain}:`, error.message);
+        devLog(`❌ External APIs failed for ${domain}:`, error.message);
       }
     }
 
     // 4. If no real data found, throw error instead of returning mock data
     if (!result) {
-      console.log(`❌ No real data found for: ${domain} - all methods exhausted`);
+      devLog(`❌ No real data found for: ${domain} - all methods exhausted`);
       throw new Error(`No enrichment data available for domain: ${domain}. All data sources returned empty results.`);
     }
 
@@ -148,7 +149,7 @@ async function performEnrichment(domain, req) {
 
     return enrichedResult;
   } catch (error) {
-    console.error(`❌ Enrichment process failed for ${domain}:`, error);
+    errorLog(`❌ Enrichment process failed for ${domain}:`, error);
     throw error;
   }
 }
@@ -288,7 +289,7 @@ router.post('/email', async (req, res) => {
       });
     }
 
-    console.log(`📧 Starting email enrichment for: ${email}`);
+    devLog(`📧 Starting email enrichment for: ${email}`);
 
     // Set timeout for email enrichment
     const timeoutPromise = new Promise((_, reject) => {
@@ -317,7 +318,7 @@ router.post('/email', async (req, res) => {
     res.json(result);
 
   } catch (error) {
-    console.error(`❌ Email enrichment failed for ${req.body.email}:`, error);
+    errorLog(`❌ Email enrichment failed for ${req.body.email}:`, error);
     
     res.status(500).json({
       success: false,

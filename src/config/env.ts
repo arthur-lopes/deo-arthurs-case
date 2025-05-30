@@ -11,7 +11,7 @@ export const config = {
 
   // Authentication
   auth: {
-    adminUser: import.meta.env.VITE_ADMIN_USER || 'admin',
+    adminUser: import.meta.env.VITE_ADMIN_USER || 'deo-case',
     adminPass: import.meta.env.VITE_ADMIN_PASS || 'admin123',
     jwtSecret: import.meta.env.VITE_JWT_SECRET || 'your-jwt-secret-key-here',
   },

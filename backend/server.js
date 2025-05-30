@@ -150,20 +150,23 @@ process.on('SIGINT', () => {
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 DEO Backend API running on port ${PORT}`);
-  console.log(`📖 API Documentation: http://localhost:${PORT}/api/docs`);
-  console.log(`🏥 Health Check: http://localhost:${PORT}/api/health`);
   console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
   
-  // Log API configurations
-  const apis = {
-    OpenAI: !!process.env.OPENAI_API_KEY,
-    SerpAPI: !!process.env.SERPAPI_KEY,
-    Hunter: !!process.env.HUNTER_API_KEY,
-    Apollo: !!process.env.APOLLO_API_KEY,
-    Clearbit: !!process.env.CLEARBIT_API_KEY
-  };
-  
-  console.log('🔑 API Keys configured:', apis);
+  // Development-only logs
+  if (process.env.NODE_ENV !== 'production') {
+    console.log(`📖 API Documentation: http://localhost:${PORT}/api/docs`);
+    console.log(`🏥 Health Check: http://localhost:${PORT}/api/health`);
+    
+    // Log API configurations in development
+    const apis = {
+      OpenAI: !!process.env.OPENAI_API_KEY,
+      SerpAPI: !!process.env.SERPAPI_KEY,
+      Hunter: !!process.env.HUNTER_API_KEY,
+      Apollo: !!process.env.APOLLO_API_KEY,
+      Clearbit: !!process.env.CLEARBIT_API_KEY
+    };
+    console.log('🔑 API Keys configured:', apis);
+  }
 });
 
 module.exports = app; 
