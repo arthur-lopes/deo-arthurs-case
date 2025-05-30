@@ -151,6 +151,8 @@ const LoginPage = () => {
                   </button>
                 </div>
               </form>
+            </div>
+          </div>
 
           {/* Features Panel - Hidden on mobile */}
           <div className="hidden lg:block lg:w-1/2 lg:pl-12">
