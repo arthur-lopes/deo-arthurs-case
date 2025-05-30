@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const { Configuration, OpenAIApi } = require('openai');
 const openaiService = require('../services/openaiService');
 const { devLog, errorLog } = require('../utils/logger');
 

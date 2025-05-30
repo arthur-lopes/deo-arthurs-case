@@ -1,18 +1,10 @@
 const axios = require('axios');
-const { Configuration, OpenAIApi } = require('openai');
 const { devLog, errorLog, successLog } = require('../utils/logger');
 
 class OpenAIService {
   constructor() {
     this.apiKey = process.env.OPENAI_API_KEY;
     this.baseUrl = 'https://api.openai.com/v1/chat/completions';
-
-    // Configuration
-    const configuration = new Configuration({
-      apiKey: this.apiKey,
-    });
-
-    this.openai = new OpenAIApi(configuration);
   }
 
   async enrichDomain(domain) {
