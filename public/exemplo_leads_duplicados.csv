@@ -1,0 +1,14 @@
+Full Name,Company,Job Title,Source,Email,Specialty,Lifecycle Stage,ZIP Code,Phone Number,Sales Status
+john doe,Smile Dental,Owner,FB Ad,john@smiledental.com,General Dentistry,Lead,12345,(555) 123-4567,Won
+JANE SMITH,Smile Dental LLC,CEO,facebook,jane.smith@smiledental.net,Orthodontics,Customer,12345,555-234-5678,Lost 
+John Doe,Smile Dental Inc.,Lead Dentist,Facebook.com,j.doe@smiledental.org,general dentistry,Prospect,12346,5552345679,Lost 
+Sarah Johnson,Bright Smiles,Head Doc,Google Ads,sarah@brightsmiles.com,Pediatric Dentistry,Lead,54321,(555) 345-6789,Lost 
+sarah johnson,BrightSmiles,Doctor,google,sarah.johnson@brightsmiles.net,pediatric,Customer,54321,555.345.6789,Won
+Michael Brown,Perfect Teeth,Dentist,Referral,mike@perfectteeth.com,Cosmetic Dentistry,Prospect,67890,555-456-7890,Lost 
+MICHAEL BROWN,Perfect Teeth Clinic,Owner,referral,m.brown@perfectteeth.net,cosmetic,Lead,,555 456 7890,Lost 
+Lisa Davis,Dental Care Plus,Practice Manager,LinkedIn,lisa@dentalcareplus.com,General,Customer,13579,(555) 567-8901,Won
+lisa davis,Dental Care+,Manager,linkedin,l.davis@dentalcareplus.net,General Dentistry,Prospect,13579,5555678901,Lost 
+Ana Costa,Consultoria Digital,Analista Senior,Google Ads,ana.costa@consultoria.com,Marketing Digital,Lead,12345,(11) 98765-4321,Won
+ANA COSTA,Consultoria Digital Ltda,Senior Analyst,google,a.costa@consultoria.net,digital marketing,Customer,12345,11987654321,Lost
+Pedro Silva,TechBrasil,Desenvolvedor,LinkedIn,pedro@techbrasil.com,Desenvolvimento,Prospect,54321,(21) 99876-5432,Won
+pedro silva,Tech Brasil,Developer,linkedin,p.silva@techbrasil.net,Software Development,Lead,54321,21998765432,Lost 

@@ -1,0 +1,37 @@
+{
+  "name": "deo-enrichment-backend",
+  "description": "Backend API for data enrichment with multiple external APIs",
+  "repository": "https://github.com/your-username/deo-enrichment-backend",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["node", "express", "api", "data-enrichment", "openai"],
+  "image": "heroku/nodejs",
+  "buildpacks": [
+    {
+      "url": "https://github.com/jontewks/puppeteer-heroku-buildpack"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-redis:mini",
+      "as": "REDIS"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "NPM_CONFIG_PRODUCTION": "false",
+    "PUPPETEER_SKIP_CHROMIUM_DOWNLOAD": "true",
+    "PUPPETEER_EXECUTABLE_PATH": "/app/.apt/usr/bin/google-chrome"
+  },
+  "scripts": {
+    "postdeploy": "echo 'Deploy completed successfully'"
+  }
+} 
