@@ -62,7 +62,7 @@ const LoginPage = () => {
             </div>
           </div>
           <h1 className="text-4xl font-bold text-white mb-3">
-            DEO - <span className="text-blue-400">Arthur Case</span>
+            DEO - <span className="text-blue-400">Arthur's Case</span>
           </h1>
           <p className="text-xl text-gray-300 mb-6">
             Lead Data Enrichment Platform
@@ -162,8 +162,8 @@ const LoginPage = () => {
                   <Sparkles className="h-6 w-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Recursos da Plataforma</h3>
-                  <p className="text-gray-300">Tudo que você precisa para seus leads</p>
+                  <h3 className="text-2xl font-bold text-white">Platform Features</h3>
+                  <p className="text-gray-300">All the case assignments in one place :)</p>
                 </div>
               </div>
 
@@ -176,20 +176,12 @@ const LoginPage = () => {
                 ))}
               </div>
 
-              <div className="mt-8 p-6 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 rounded-2xl border border-blue-500/20">
-                <h4 className="text-lg font-bold text-white mb-3">🚀 Novidades</h4>
-                <p className="text-gray-300 leading-relaxed">
-                  Interface completamente redesenhada com melhor UX, novos algoritmos de IA e integração 
-                  aprimorada com APIs de enriquecimento.
-                </p>
-              </div>
-
-              <div className="mt-8 text-center">
+              {/* <div className="mt-8 text-center">
                 <div className="inline-flex items-center text-gray-400">
                   <Shield className="h-4 w-4 mr-2" />
                   <span className="text-sm">Conexão segura e dados protegidos</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

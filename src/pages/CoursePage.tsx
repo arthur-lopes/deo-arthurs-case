@@ -26,7 +26,7 @@ const CoursePage = () => {
         'Data quality tools and standardization',
         'Global settings and lifecycle configuration'
       ],
-      objectives: 'By month-end, you\'ll have an optimized, controlled CRM with custom properties, clean user management, and standardized data structure ready for advanced functionality.',
+      objectives: 'By month-end, I will have an optimized, controlled CRM with custom properties, clean user management, and standardized data structure ready for advanced functionality.',
       practicalProjects: [
         'Complete CRM audit with duplicate identification and cleanup',
         'Implement naming conventions across 5+ assets',
@@ -52,7 +52,7 @@ const CoursePage = () => {
         'AI content generation and optimization',
         'Social media management and advertising integration'
       ],
-      objectives: 'You\'ll orchestrate sophisticated marketing automations that attract, engage, and convert leads measurably, leveraging AI for content creation and optimization.',
+      objectives: 'I will orchestrate sophisticated marketing automations that attract, engage, and convert leads measurably, leveraging AI for content creation and optimization.',
       practicalProjects: [
         'Complete inbound campaign: e-book landing page with nurturing sequence',
         'Multi-branch workflow with personalization and smart content',
@@ -78,7 +78,7 @@ const CoursePage = () => {
         'Marketing-to-Sales handoff optimization',
         'Quote generation and proposal management'
       ],
-      objectives: 'Deliver a turbocharged Sales Hub where all leads and deals are tracked efficiently, with automations that streamline repetitive tasks and AI-powered prioritization.',
+      objectives: 'I will deliver a turbocharged Sales Hub where all leads and deals are tracked efficiently, with automations that streamline repetitive tasks and AI-powered prioritization.',
       practicalProjects: [
         'Pipeline reengineering with automated stage actions',
         '4-step prospecting sequence with templates',
@@ -104,7 +104,7 @@ const CoursePage = () => {
         'Cross-team integration (Sales/Service alignment)',
         'Proactive customer success workflows'
       ],
-      objectives: 'Establish a robust, intelligent support system where customers receive quick responses through self-service or structured human interaction, with no tickets lost.',
+      objectives: 'I will establish a robust, intelligent support system where customers receive quick responses through self-service or structured human interaction, with no tickets lost.',
       practicalProjects: [
         'Automated support flow with email and form integration',
         'Knowledge base with AI-powered chatbot',
@@ -130,7 +130,7 @@ const CoursePage = () => {
         'API integration and custom development',
         'Governance and monitoring systems'
       ],
-      objectives: 'Integrate HubSpot deeply into your business ecosystem, with unified data across systems, automated quality control, and custom solutions for unique challenges.',
+      objectives: 'I will integrate HubSpot deeply into my business ecosystem, with unified data across systems, automated quality control, and custom solutions for unique challenges.',
       practicalProjects: [
         'Bidirectional Google Sheets integration via Zapier',
         'Custom code action for external API enrichment',
@@ -156,12 +156,48 @@ const CoursePage = () => {
         'Strategic vision and business alignment',
         'Innovation projects and future roadmapping'
       ],
-      objectives: 'Become an internal HubSpot leader who not only maintains the system but continuously adapts and improves it to drive measurable business results.',
+      objectives: 'I will become an internal HubSpot leader who not only maintains the system but continuously adapts and improves it to drive measurable business results.',
       practicalProjects: [
         'AI-powered sales forecasting with action plans',
         'Customer 360 view with AI insights',
         'Innovation hackathon project',
         'Strategic presentation with 6-12 month roadmap'
+      ]
+    },
+    {
+      month: 'BONUS',
+      title: 'English Proficiency Enhancement',
+      subtitle: 'Technical English & Global Communication Skills',
+      description: 'Master technical English communication to access global HubSpot resources, participate in international communities, and advance my career.',
+      duration: '4 weeks',
+      color: 'from-emerald-500 via-teal-500 to-cyan-600',
+      icon: Globe,
+      isBonus: true,
+      topics: [
+        'Technical vocabulary for CRM, marketing automation, and sales processes',
+        'HubSpot Academy content consumption in English',
+        'International community participation and networking',
+        'Technical documentation reading and writing skills',
+        'Presentation skills for global audience',
+        'Email communication with international teams',
+        'Professional LinkedIn content creation in English',
+        'Attending global HubSpot events and webinars'
+      ],
+      objectives: 'I will develop fluent technical English skills to unlock global opportunities, access premium content, and position myself as an international HubSpot expert.',
+      practicalProjects: [
+        'Complete HubSpot Academy course entirely in English',
+        'Write technical blog post about HubSpot best practices',
+        'Participate in HubSpot Community discussions',
+        'Create English presentation about your 6-month journey',
+        'Network with 5 international HubSpot professionals'
+      ],
+      resources: [
+        'HubSpot Academy (English-only courses)',
+        'Grammarly for technical writing improvement',
+        'Cambly or iTalki for conversation practice',
+        'HubSpot Community & User Groups',
+        'Technical English vocabulary apps',
+        'International HubSpot events and conferences'
       ]
     }
   ];
@@ -249,18 +285,18 @@ const CoursePage = () => {
               <GraduationCap className="h-10 w-10 text-white" />
             </div>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-2">DEO Academy</h1>
-              <p className="text-xl text-purple-100">6-Month Intensive HubSpot Administrator Program</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-2">My development plan</h1>
+              <p className="text-xl text-purple-100">Individual Development Plan - 6 Months + Bonus</p>
             </div>
           </div>
           <div className="max-w-4xl">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Transform into a World-Class HubSpot Super Admin
+              My Journey to Become a HubSpot Super Admin
             </h2>
             <p className="text-xl text-purple-100 leading-relaxed mb-6">
-              Master all HubSpot modules (Marketing, Sales, Service, Operations) with advanced automations, 
+              I will master all HubSpot modules (Marketing, Sales, Service, Operations) with advanced automations, 
               complex integrations, applied AI, predictive analytics, and strategic governance. 
-              Evolve from technical operator to strategic decision-maker.
+              I will evolve from technical operator to strategic decision-maker.
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-6 mt-8">
@@ -287,25 +323,25 @@ const CoursePage = () => {
             <BookOpen className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">Program Overview</h2>
+            <h2 className="text-3xl font-bold text-gray-900">My Plan Overview</h2>
             <p className="text-gray-600">Comprehensive 6-month development journey</p>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Program Objective</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">My Objective</h3>
             <p className="text-gray-700 leading-relaxed">
-              Transform an advanced user into a HubSpot super admin with world-class mastery of all modules. 
-              This intensive course is structured month-by-month, covering advanced topics, monthly objectives, 
+              Transform myself from an advanced user into a HubSpot super admin with world-class mastery of all modules. 
+              This intensive plan is structured month-by-month, covering advanced topics, monthly objectives, 
               recommended resources in Portuguese and English, practical tips, and real-world projects.
             </p>
           </div>
           <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Who This Is For</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-4">My Current Profile</h3>
             <p className="text-gray-700 leading-relaxed">
-              Advanced HubSpot users ready to become strategic administrators who can extract maximum value 
-              from the platform, implement complex automations, and lead innovation initiatives within their organizations.
+              I am an advanced HubSpot user ready to become a strategic administrator who can extract maximum value 
+              from the platform, implement complex automations, and lead innovation initiatives within my organization.
             </p>
           </div>
         </div>
@@ -314,9 +350,9 @@ const CoursePage = () => {
           <div className="flex items-start">
             <Sparkles className="h-6 w-6 text-blue-600 mr-3 mt-1 flex-shrink-0" />
             <div>
-              <h4 className="font-bold text-blue-900 mb-2">Development Focus</h4>
+              <h4 className="font-bold text-blue-900 mb-2">My Development Focus</h4>
               <p className="text-blue-800 leading-relaxed">
-                Follow each step to evolve from technical operator to strategist who extracts maximum value 
+                I will follow each step to evolve from technical operator to strategist who extracts maximum value 
                 from the HubSpot platform. Each month builds upon the previous, creating a comprehensive 
                 foundation for enterprise-level CRM administration.
               </p>
@@ -348,8 +384,8 @@ const CoursePage = () => {
             <Monitor className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">6-Month Curriculum</h2>
-            <p className="text-gray-600">Detailed month-by-month progression</p>
+            <h2 className="text-3xl font-bold text-gray-900">My 6-Month Curriculum + Bonus</h2>
+            <p className="text-gray-600">Detailed month-by-month progression with English enhancement bonus</p>
           </div>
         </div>
 
@@ -359,25 +395,30 @@ const CoursePage = () => {
             const isExpanded = expandedModule === index;
             
             return (
-              <div key={index} className="border border-gray-200 rounded-2xl overflow-hidden">
+              <div key={index} className={`border ${module.isBonus ? 'border-2 border-emerald-300 bg-gradient-to-r from-emerald-50 to-teal-50' : 'border-gray-200'} rounded-2xl overflow-hidden ${module.isBonus ? 'shadow-lg' : ''}`}>
+                {module.isBonus && (
+                  <div className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-center py-2 px-4">
+                    <span className="font-bold text-sm">🎉 BONUS MODULE - English Enhancement</span>
+                  </div>
+                )}
                 <div 
-                  className="p-6 cursor-pointer hover:bg-gray-50 transition-colors"
+                  className={`p-6 cursor-pointer ${module.isBonus ? 'hover:bg-emerald-50' : 'hover:bg-gray-50'} transition-colors`}
                   onClick={() => toggleModule(index)}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${module.color} rounded-2xl flex items-center justify-center mr-6`}>
+                      <div className={`w-16 h-16 bg-gradient-to-r ${module.color} rounded-2xl flex items-center justify-center mr-6 ${module.isBonus ? 'shadow-lg' : ''}`}>
                         <Icon className="h-8 w-8 text-white" />
                       </div>
                       <div>
                         <div className="flex items-center gap-3 mb-2">
-                          <span className="bg-gray-100 text-gray-700 text-sm font-bold py-1 px-3 rounded-full">
-                            Month {module.month}
+                          <span className={`${module.isBonus ? 'bg-emerald-100 text-emerald-700' : 'bg-gray-100 text-gray-700'} text-sm font-bold py-1 px-3 rounded-full`}>
+                            {module.isBonus ? 'BONUS' : `Month ${module.month}`}
                           </span>
                           <span className="text-gray-500 text-sm">{module.duration}</span>
                         </div>
                         <h3 className="text-xl font-bold text-gray-900 mb-1">{module.title}</h3>
-                        <p className="text-lg font-medium text-blue-600 mb-2">{module.subtitle}</p>
+                        <p className={`text-lg font-medium ${module.isBonus ? 'text-emerald-600' : 'text-blue-600'} mb-2`}>{module.subtitle}</p>
                         <p className="text-gray-600">{module.description}</p>
                       </div>
                     </div>
@@ -392,11 +433,11 @@ const CoursePage = () => {
                 </div>
 
                 {isExpanded && (
-                  <div className="border-t border-gray-200 p-6 bg-gray-50">
+                  <div className={`border-t ${module.isBonus ? 'border-emerald-200 bg-emerald-50/50' : 'border-gray-200 bg-gray-50'} p-6`}>
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                       <div>
                         <h4 className="font-bold text-gray-900 mb-4 flex items-center">
-                          <Target className="h-5 w-5 mr-2 text-blue-600" />
+                          <Target className={`h-5 w-5 mr-2 ${module.isBonus ? 'text-emerald-600' : 'text-blue-600'}`} />
                           Key Topics
                         </h4>
                         <div className="space-y-2">
@@ -411,27 +452,45 @@ const CoursePage = () => {
                       
                       <div className="space-y-6">
                         <div>
-                          <h4 className="font-bold text-gray-900 mb-3 flex items-center">
+                                                      <h4 className="font-bold text-gray-900 mb-3 flex items-center">
                             <Star className="h-5 w-5 mr-2 text-yellow-500" />
-                            Monthly Objectives
+                             {module.isBonus ? 'My Bonus Objectives' : 'My Monthly Objectives'}
                           </h4>
                           <p className="text-gray-700 text-sm leading-relaxed">{module.objectives}</p>
                         </div>
                         
                         <div>
                           <h4 className="font-bold text-gray-900 mb-3 flex items-center">
-                            <Cog className="h-5 w-5 mr-2 text-purple-600" />
+                            <Cog className={`h-5 w-5 mr-2 ${module.isBonus ? 'text-emerald-600' : 'text-purple-600'}`} />
                             Practical Projects
                           </h4>
                           <div className="space-y-2">
                             {module.practicalProjects.map((project, projectIndex) => (
                               <div key={projectIndex} className="flex items-start">
-                                <div className="w-2 h-2 bg-purple-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                <div className={`w-2 h-2 ${module.isBonus ? 'bg-emerald-500' : 'bg-purple-500'} rounded-full mr-2 mt-2 flex-shrink-0`}></div>
                                 <span className="text-gray-700 text-sm">{project}</span>
                               </div>
                             ))}
                           </div>
                         </div>
+
+                        {/* Bonus Resources Section */}
+                        {module.isBonus && module.resources && (
+                          <div>
+                            <h4 className="font-bold text-gray-900 mb-3 flex items-center">
+                              <Globe className="h-5 w-5 mr-2 text-emerald-600" />
+                              Recommended Resources
+                            </h4>
+                            <div className="space-y-2">
+                              {module.resources.map((resource, resourceIndex) => (
+                                <div key={resourceIndex} className="flex items-start">
+                                  <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2 mt-2 flex-shrink-0"></div>
+                                  <span className="text-gray-700 text-sm">{resource}</span>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -451,8 +510,8 @@ const CoursePage = () => {
               <Award className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Included Certifications</h2>
-              <p className="text-gray-600">Professional recognition</p>
+              <h2 className="text-2xl font-bold text-gray-900">My Target Certifications</h2>
+              <p className="text-gray-600">Professional recognition I will achieve</p>
             </div>
           </div>
           
@@ -473,8 +532,8 @@ const CoursePage = () => {
               <Globe className="h-6 w-6 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Learning Resources</h2>
-              <p className="text-gray-600">Portuguese & English materials</p>
+              <h2 className="text-2xl font-bold text-gray-900">My Learning Resources</h2>
+              <p className="text-gray-600">Portuguese & English materials I will use</p>
             </div>
           </div>
           
@@ -502,49 +561,24 @@ const CoursePage = () => {
           <div className="w-16 h-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
             <Brain className="h-8 w-8 text-white" />
           </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Program Philosophy</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">My Development Philosophy</h2>
           <p className="text-gray-700 text-lg leading-relaxed mb-6">
-            This intensive program combines theoretical knowledge with hands-on practical experience. 
-            Each month builds systematically upon previous learning, ensuring you develop both 
+            My intensive development plan combines theoretical knowledge with hands-on practical experience. 
+            Each month builds systematically upon previous learning, ensuring I develop both 
             technical expertise and strategic thinking capabilities.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="font-bold text-indigo-900 mb-2">Learn by Doing</h3>
-              <p className="text-gray-600 text-sm">Every concept is reinforced with practical projects and real-world applications</p>
+              <h3 className="font-bold text-indigo-900 mb-2">I Learn by Doing</h3>
+              <p className="text-gray-600 text-sm">Every concept I learn is reinforced with practical projects and real-world applications</p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="font-bold text-indigo-900 mb-2">Progressive Complexity</h3>
-              <p className="text-gray-600 text-sm">Start with foundations and gradually master advanced integrations and AI</p>
+              <h3 className="font-bold text-indigo-900 mb-2">My Progressive Complexity</h3>
+              <p className="text-gray-600 text-sm">I start with foundations and gradually master advanced integrations and AI</p>
             </div>
             <div className="bg-white rounded-2xl p-6 shadow-md">
-              <h3 className="font-bold text-indigo-900 mb-2">Strategic Focus</h3>
-              <p className="text-gray-600 text-sm">Transform from operator to strategic leader who drives business results</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Program Commitment */}
-      <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 text-center">
-        <div className="max-w-3xl mx-auto">
-          <div className="w-16 h-16 bg-gradient-to-r from-red-600 to-pink-600 rounded-3xl flex items-center justify-center mx-auto mb-6">
-            <TrendingUp className="h-8 w-8 text-white" />
-          </div>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Ready to Transform Your Career?</h2>
-          <p className="text-gray-600 mb-8 text-lg">
-            This is a development program, not a sales course. The focus is on building expertise 
-            and strategic thinking capabilities that will serve you throughout your career as a 
-            HubSpot administrator and revenue operations professional.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 font-bold py-4 px-8 rounded-2xl text-lg border border-gray-300">
-              <BookOpen className="h-5 w-5" />
-              Professional Development Program
-            </div>
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 px-8 rounded-2xl text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
-              <GraduationCap className="h-5 w-5" />
-              Begin Your Journey
+              <h3 className="font-bold text-indigo-900 mb-2">My Strategic Focus</h3>
+              <p className="text-gray-600 text-sm">I will transform from operator to strategic leader who drives business results</p>
             </div>
           </div>
         </div>

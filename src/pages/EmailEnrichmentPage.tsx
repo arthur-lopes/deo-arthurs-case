@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, FileText, Sparkles, User, Building2, Target, TrendingUp, Zap } from 'lucide-react';
 import EmailEnrichmentForm from '../components/EmailEnrichmentForm';
 import DataTable from '../components/DataTable';
+import ApiStatusIndicator from '../components/ApiStatusIndicator';
 import { Lead } from '../types/Lead';
 
 const EmailEnrichmentPage = () => {
@@ -22,17 +23,20 @@ const EmailEnrichmentPage = () => {
       <div className="relative overflow-hidden bg-gradient-to-br from-purple-600 via-pink-600 to-rose-700 rounded-3xl p-8 md:p-12 text-white">
         <div className="absolute inset-0 bg-white/5 opacity-20"></div>
         <div className="relative z-10">
-          <div className="flex items-center gap-4 mb-6">
-            <div className="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center">
-              <Mail className="h-8 w-8 text-white" />
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-2xl flex items-center justify-center">
+                <Mail className="h-8 w-8 text-white" />
+              </div>
+              <div>
+                <h1 className="text-3xl md:text-4xl font-bold">Email Enrichment</h1>
+                <p className="text-purple-100">Complete professional profiles in seconds</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold">Email Enrichment</h1>
-              <p className="text-purple-100">Complete professional profile in seconds</p>
-            </div>
+            <ApiStatusIndicator />
           </div>
           <p className="text-xl md:text-2xl text-purple-100 max-w-3xl leading-relaxed">
-            Transform any email into a detailed professional profile with history, current company and social data.
+            Transform any email into a detailed professional profile with work history, current company and social data.
           </p>
         </div>
       </div>
@@ -42,19 +46,19 @@ const EmailEnrichmentPage = () => {
         {[
           {
             icon: User,
-            title: 'Detailed Profile',
-            description: 'Name, position, seniority and professional specialization',
+            title: 'Professional Profile',
+            description: 'Name, position, seniority level and professional specialization',
             color: 'from-blue-500 to-blue-600'
           },
           {
             icon: Building2,
-            title: 'Company Data',
-            description: 'Current company, industry, location and corporate information',
+            title: 'Company Information',
+            description: 'Current company, industry, location and corporate details',
             color: 'from-green-500 to-green-600'
           },
           {
             icon: Target,
-            title: 'Complete History',
+            title: 'Work History',
             description: 'Professional experience and social media presence',
             color: 'from-purple-500 to-purple-600'
           }
@@ -80,7 +84,7 @@ const EmailEnrichmentPage = () => {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900">How It Works</h2>
-            <p className="text-gray-600">Automatic process in 3 steps</p>
+            <p className="text-gray-600">Automated process in 3 simple steps</p>
           </div>
         </div>
         
@@ -89,21 +93,21 @@ const EmailEnrichmentPage = () => {
             {
               step: '1',
               title: 'Enter Email',
-              description: 'Input the email address you want to enrich',
+              description: 'Input the email address you want to enrich with data',
               icon: Mail,
               color: 'from-blue-500 to-blue-600'
             },
             {
               step: '2',
-              title: 'AI Searches Data',
-              description: 'System finds professional and business information',
+              title: 'AI Data Search',
+              description: 'System finds professional and business information automatically',
               icon: Zap,
               color: 'from-yellow-500 to-orange-500'
             },
             {
               step: '3',
               title: 'Complete Profile',
-              description: 'Receive detailed name, position, company and history',
+              description: 'Receive detailed name, position, company and work history',
               icon: TrendingUp,
               color: 'from-green-500 to-green-600'
             }
@@ -134,8 +138,8 @@ const EmailEnrichmentPage = () => {
             <Mail className="h-6 w-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">Discover Profile</h2>
-            <p className="text-gray-600">Enter an email to start enrichment</p>
+            <h2 className="text-2xl font-bold text-gray-900">Discover Professional Profile</h2>
+            <p className="text-gray-600">Enter an email address to start enrichment</p>
           </div>
         </div>
         
@@ -188,7 +192,7 @@ const EmailEnrichmentPage = () => {
           </p>
           <div className="inline-flex items-center text-purple-600 font-semibold">
             <Sparkles className="h-5 w-5 mr-2" />
-            Start by typing a corporate email
+            Start by entering a corporate email address
           </div>
         </div>
       )}
@@ -201,16 +205,16 @@ const EmailEnrichmentPage = () => {
           </div>
           <div>
             <h2 className="text-2xl font-bold text-gray-900">Tips for Better Results</h2>
-            <p className="text-gray-600">Maximize the quality of found data</p>
+            <p className="text-gray-600">Maximize the quality of enriched data</p>
           </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            '✅ Use corporate emails for higher accuracy (ex: name@company.com)',
-            '🎯 Executive emails usually return more information',
-            '🌐 System works better with companies that have online presence',
-            '🔒 Information is collected only from public and verified sources'
+            '✅ Use corporate emails for higher accuracy (e.g. name@company.com)',
+            '🎯 Executive emails typically return more detailed information',
+            '🌐 System works best with companies that have strong online presence',
+            '🔒 Data is collected only from public and verified sources'
           ].map((tip, index) => (
             <div key={index} className="flex items-start p-4 bg-gray-50 rounded-2xl">
               <div className="text-lg mr-3">{tip.split(' ')[0]}</div>

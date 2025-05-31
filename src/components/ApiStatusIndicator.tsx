@@ -36,7 +36,7 @@ const ApiStatusIndicator: React.FC = () => {
           dotColor: 'bg-green-500',
           icon: '✅',
           text: 'Backend Online',
-          subtext: '(APIs Disponíveis)'
+          subtext: '(APIs Available)'
         };
       case 'offline':
         return {
@@ -46,7 +46,7 @@ const ApiStatusIndicator: React.FC = () => {
           dotColor: 'bg-red-500',
           icon: '❌',
           text: 'Backend Offline',
-          subtext: '(Funcionalidade Limitada)'
+          subtext: '(Limited Functionality)'
         };
       case 'checking':
       default:
@@ -56,8 +56,8 @@ const ApiStatusIndicator: React.FC = () => {
           borderColor: 'border-yellow-200',
           dotColor: 'bg-yellow-500',
           icon: '🔄',
-          text: 'Verificando Backend',
-          subtext: '(Aguarde...)'
+          text: 'Checking Backend',
+          subtext: '(Please wait...)'
         };
     }
   };
