@@ -57,8 +57,8 @@ const Home = () => {
     },
     {
       to: '/course',
-      title: 'DEO Academy',
-      description: 'Complete course on lead automation and analysis',
+      title: 'Development Plan',
+      description: 'Complete development plan on lead automation and analysis',
       icon: BookOpen,
       color: 'text-purple-600'
     }
