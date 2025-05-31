@@ -51,6 +51,57 @@ const TutorialPage = () => {
 
   const useCases = [
     {
+      title: 'FEATURED: Closed Won% Analysis',
+      description: 'Calculate the percentage of leads that convert to won deals using real dental practice data - the ultimate conversion metric.',
+      color: 'from-emerald-500 via-green-500 to-teal-600',
+      icon: Target,
+      featured: true,
+      details: {
+        objective: 'Calculate and analyze the Closed Won% (percentage of leads that convert to won sales) using imported dental practice data to identify the most successful conversion patterns.',
+        chartType: 'Funnel Chart + Bar Chart Combination',
+        dimensions: [
+          { name: 'Specialty', description: 'Dental specialization (General Dentistry, Orthodontics, Pediatric, Cosmetic, Family)', source: 'Contacts' },
+          { name: 'Lead Source', description: 'Original acquisition channel (FB Ad, Google Ads, Referral, LinkedIn, Website)', source: 'Contacts' },
+          { name: 'Lifecycle Stage', description: 'Current stage in sales funnel (Lead, Prospect, Customer)', source: 'Contacts' },
+          { name: 'Sales Status', description: 'Final sales outcome (Won, Lost)', source: 'Contacts' }
+        ],
+        metrics: [
+          { name: 'Closed Won%', description: 'Primary KPI: (Won Deals / Total Deals with Status) * 100', calculation: '(COUNT(Sales Status = "Won") / COUNT(Sales Status IS NOT NULL)) * 100' },
+          { name: 'Total Leads', description: 'Count of all imported contacts', calculation: 'COUNT(Contacts)' },
+          { name: 'Deals with Status', description: 'Leads that reached final sales decision', calculation: 'COUNT(Sales Status IS NOT NULL)' },
+          { name: 'Won Deals', description: 'Successfully closed deals', calculation: 'COUNT(Sales Status = "Won")' },
+          { name: 'Lost Deals', description: 'Unsuccessful deals', calculation: 'COUNT(Sales Status = "Lost")' },
+          { name: 'Conversion Rate by Source', description: 'Won% segmented by acquisition channel', calculation: 'Closed Won% grouped by Lead Source' }
+        ],
+        filters: [
+          'Sales Status is not empty (Won or Lost)',
+          'Specialty is filled',
+          'Lead Source is not empty',
+          'Created date within analysis period'
+        ],
+        insights: [
+          'Overall Closed Won% across all dental practices',
+          'Best performing specialties (e.g., General Dentistry vs Orthodontics)',
+          'Most effective lead sources (FB Ads vs Google Ads vs Referrals)',
+          'Lifecycle stage impact on conversion rates',
+          'Practice size correlation with win rates',
+          'Geographic patterns (ZIP code analysis)'
+        ],
+        sampleData: {
+          title: 'Sample Imported Data Structure',
+          description: 'Real dental practice data used for this analysis',
+          headers: ['Full Name', 'Company', 'Job Title', 'Source', 'Email', 'Specialty', 'Lifecycle Stage', 'ZIP Code', 'Phone Number', 'Sales Status'],
+          rows: [
+            ['john doe', 'Smile Dental', 'Owner', 'FB Ad', 'john@smiledental.com', 'General Dentistry', 'Lead', '12345', '(555) 123-4567', 'Won'],
+            ['JANE SMITH', 'Smile Dental LLC', 'CEO', 'facebook', 'jane.smith@smiledental.net', 'Orthodontics', 'Customer', '12345', '555-234-5678', 'Lost'],
+            ['Sarah Johnson', 'Bright Smiles', 'Head Doc', 'Google Ads', 'sarah@brightsmiles.com', 'Pediatric Dentistry', 'Lead', '54321', '(555) 345-6789', 'Lost'],
+            ['Michael Brown', 'Perfect Teeth', 'Dentist', 'Referral', 'mike@perfectteeth.com', 'Cosmetic Dentistry', 'Prospect', '67890', '555-456-7890', 'Lost'],
+            ['Lisa Davis', 'Dental Care Plus', 'Practice Manager', 'LinkedIn', 'lisa@dentalcareplus.com', 'General', 'Customer', '13579', '(555) 567-8901', 'Won']
+          ]
+        }
+      }
+    },
+    {
       title: 'Conversion Analysis by Specialty',
       description: 'Create a report showing lead-to-customer conversion rate, segmented by professional specialty identified by AI.',
       color: 'from-blue-500 to-blue-600',
@@ -366,26 +417,74 @@ const TutorialPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {useCases.map((useCase, index) => {
+        <div className="space-y-6">
+          {/* Featured Use Case */}
+          {useCases.filter(useCase => useCase.featured).map((useCase, index) => {
             const Icon = useCase.icon;
             return (
-              <div key={index} className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
-                <div className={`w-12 h-12 bg-gradient-to-r ${useCase.color} rounded-xl flex items-center justify-center mb-4`}>
-                  <Icon className="h-6 w-6 text-white" />
+              <div key={`featured-${index}`} className="relative bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 rounded-3xl p-8 border-2 border-emerald-200 shadow-xl">
+                <div className="absolute top-4 right-4">
+                  <span className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    ⭐ FEATURED EXAMPLE
+                  </span>
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">{useCase.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-4">{useCase.description}</p>
-                <button
-                  onClick={() => setSelectedUseCase(index)}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center justify-center"
-                >
-                  View Detailed Configuration
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </button>
+                <div className="flex items-start space-x-6">
+                  <div className={`w-16 h-16 bg-gradient-to-r ${useCase.color} rounded-2xl flex items-center justify-center flex-shrink-0`}>
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-3">{useCase.title}</h3>
+                    <p className="text-gray-700 leading-relaxed mb-6 text-lg">{useCase.description}</p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-white/70 rounded-xl p-4 border border-emerald-200">
+                        <h4 className="font-bold text-emerald-700 mb-2">Key Metric</h4>
+                        <p className="text-sm text-gray-600">Closed Won% = (Won / Total Deals) × 100</p>
+                      </div>
+                      <div className="bg-white/70 rounded-xl p-4 border border-emerald-200">
+                        <h4 className="font-bold text-emerald-700 mb-2">Data Source</h4>
+                        <p className="text-sm text-gray-600">Real dental practice imports</p>
+                      </div>
+                      <div className="bg-white/70 rounded-xl p-4 border border-emerald-200">
+                        <h4 className="font-bold text-emerald-700 mb-2">Chart Type</h4>
+                        <p className="text-sm text-gray-600">Funnel + Bar Combination</p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => setSelectedUseCase(0)}
+                      className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-2xl text-lg transition-all duration-200 flex items-center shadow-lg hover:shadow-xl transform hover:scale-105"
+                    >
+                      View Complete Configuration
+                      <ArrowRight className="ml-3 h-5 w-5" />
+                    </button>
+                  </div>
+                </div>
               </div>
             );
           })}
+
+          {/* Regular Use Cases */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {useCases.filter(useCase => !useCase.featured).map((useCase, index) => {
+              const Icon = useCase.icon;
+              const actualIndex = useCases.findIndex(uc => uc === useCase);
+              return (
+                <div key={index} className="bg-white rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${useCase.color} rounded-xl flex items-center justify-center mb-4`}>
+                    <Icon className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">{useCase.title}</h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">{useCase.description}</p>
+                  <button
+                    onClick={() => setSelectedUseCase(actualIndex)}
+                    className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium py-3 px-4 rounded-xl transition-all duration-200 flex items-center justify-center"
+                  >
+                    View Detailed Configuration
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
@@ -551,6 +650,50 @@ const TutorialPage = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Sample Data Section - Only for Featured Use Case */}
+                {useCases[selectedUseCase].details.sampleData && (
+                  <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+                    <div className="bg-gradient-to-r from-emerald-600 to-teal-700 px-6 py-4">
+                      <div className="flex items-center">
+                        <Database className="h-6 w-6 text-white mr-3" />
+                        <h3 className="text-xl font-bold text-white">{useCases[selectedUseCase].details.sampleData.title}</h3>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <p className="text-gray-700 mb-4">{useCases[selectedUseCase].details.sampleData.description}</p>
+                      <div className="overflow-x-auto">
+                        <table className="w-full text-sm border border-gray-200 rounded-lg">
+                          <thead className="bg-emerald-50">
+                            <tr>
+                              {useCases[selectedUseCase].details.sampleData.headers.map((header, index) => (
+                                <th key={index} className="px-3 py-2 text-left font-bold text-emerald-700 border-r border-emerald-200 last:border-r-0">
+                                  {header}
+                                </th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {useCases[selectedUseCase].details.sampleData.rows.map((row, rowIndex) => (
+                              <tr key={rowIndex} className="border-t border-gray-200 hover:bg-gray-50">
+                                {row.map((cell, cellIndex) => (
+                                  <td key={cellIndex} className="px-3 py-2 border-r border-gray-200 last:border-r-0 font-mono text-xs">
+                                    {cell}
+                                  </td>
+                                ))}
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <div className="mt-4 p-4 bg-emerald-50 rounded-xl border border-emerald-200">
+                        <p className="text-emerald-800 text-sm">
+                          <strong>Analysis Result:</strong> From this sample data, we can calculate Closed Won% = 3 Won deals ÷ 5 Total deals with status = <strong>60% conversion rate</strong>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 {/* Insights */}
                 <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200">

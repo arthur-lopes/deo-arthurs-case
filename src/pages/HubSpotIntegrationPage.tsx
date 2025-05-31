@@ -25,13 +25,14 @@ import {
   Shield,
   Layers,
   GitBranch,
-  Server
+  Server,
+  Brain
 } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const HubSpotIntegrationPage = () => {
   const navigate = useNavigate();
-  const [selectedIntegration, setSelectedIntegration] = useState<'webhook' | 'cronjob' | null>(null);
+  const [selectedIntegration, setSelectedIntegration] = useState<'breeze' | 'webhook' | 'cronjob' | null>(null);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, id: string) => {
@@ -379,6 +380,40 @@ cron.schedule('*/30 * * * *', async () => {
 
   const integrationOptions = [
     {
+      id: 'breeze',
+      title: 'HubSpot Breeze Intelligence',
+      subtitle: 'Native AI enrichment',
+      description: 'Built-in HubSpot AI that automatically enriches contact and company data using multiple sources',
+      icon: Brain,
+      color: 'from-indigo-400 to-purple-500',
+      isNative: true,
+      features: [
+        'Automatic data enrichment',
+        'Multiple data sources',
+        'Buyer intent identification',
+        'Form shortening capabilities',
+        'Built into HubSpot platform'
+      ],
+      requirements: [
+        'HubSpot premium subscription',
+        'Breeze Intelligence add-on',
+        'Account opt-in to beta features',
+        'No custom development needed'
+      ],
+      pros: [
+        'No technical setup required',
+        'Native HubSpot integration',
+        'Automatic and continuous',
+        'Multiple data sources'
+      ],
+      cons: [
+        'Additional cost for add-on',
+        'Limited to HubSpot data sources',
+        'Less customization options',
+        'No email/phone for contacts'
+      ]
+    },
+    {
       id: 'webhook',
       title: 'Webhook + Operations Hub',
       subtitle: 'Real-time enrichment',
@@ -492,8 +527,54 @@ cron.schedule('*/30 * * * *', async () => {
           <p className="text-gray-600 text-lg">Two different approaches for different needs</p>
         </div>
 
+        {/* Native HubSpot Option (smaller) */}
+        <div className="mb-6">
+          {integrationOptions.filter(option => option.isNative).map((option) => {
+            const Icon = option.icon;
+            const isSelected = selectedIntegration === option.id;
+            
+            return (
+              <div 
+                key={option.id}
+                className={`bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl border transition-all duration-300 cursor-pointer ${
+                  isSelected ? 'border-indigo-400 shadow-lg' : 'border-indigo-200 hover:border-indigo-300'
+                }`}
+                onClick={() => setSelectedIntegration(option.id as 'breeze' | 'webhook' | 'cronjob')}
+              >
+                <div className="p-6">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      <div className={`w-12 h-12 bg-gradient-to-r ${option.color} rounded-xl flex items-center justify-center mr-4`}>
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-gray-900 flex items-center gap-2">
+                          {option.title}
+                          <span className="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded-full">Native</span>
+                        </h3>
+                        <p className="text-gray-600 text-sm">{option.subtitle}</p>
+                        <p className="text-gray-600 text-sm mt-1">{option.description}</p>
+                      </div>
+                    </div>
+                    <button
+                      className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                        isSelected 
+                          ? 'bg-indigo-600 text-white' 
+                          : 'bg-indigo-100 text-indigo-700 hover:bg-indigo-200'
+                      }`}
+                    >
+                      {isSelected ? 'Selected' : 'Learn More'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Custom Integration Options */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {integrationOptions.map((option) => {
+          {integrationOptions.filter(option => !option.isNative).map((option) => {
             const Icon = option.icon;
             const isSelected = selectedIntegration === option.id;
             
@@ -588,6 +669,177 @@ cron.schedule('*/30 * * * *', async () => {
       {/* Implementation Details */}
       {selectedIntegration && (
         <div className="space-y-8">
+          {/* Breeze Intelligence Implementation */}
+          {selectedIntegration === 'breeze' && (
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl flex items-center justify-center mr-4">
+                  <Brain className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900">HubSpot Breeze Intelligence Setup</h2>
+                  <p className="text-gray-600">Native AI-powered data enrichment with minimal setup</p>
+                </div>
+              </div>
+
+              <div className="space-y-8">
+                {/* What is Breeze Intelligence */}
+                <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-6 border border-indigo-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                    <Brain className="h-5 w-5 mr-2 text-indigo-600" />
+                    What is Breeze Intelligence?
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-4">
+                    HubSpot Breeze Intelligence is an AI-powered feature that automatically enriches contact and company data records 
+                    while identifying buyer intent to help you effectively target the right leads and shorten forms to convert them quickly.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-white rounded-xl p-4 border border-indigo-200">
+                      <h4 className="font-semibold text-indigo-900 mb-2">Data Sources</h4>
+                      <ul className="text-sm text-indigo-700 space-y-1">
+                        <li>• Publicly-available sources and websites</li>
+                        <li>• Third-party data providers</li>
+                        <li>• HubSpot's comprehensive database</li>
+                      </ul>
+                    </div>
+                    <div className="bg-white rounded-xl p-4 border border-indigo-200">
+                      <h4 className="font-semibold text-indigo-900 mb-2">Key Capabilities</h4>
+                      <ul className="text-sm text-indigo-700 space-y-1">
+                        <li>• Contact and company enrichment</li>
+                        <li>• Buyer intent identification</li>
+                        <li>• Form shortening automation</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Setup Steps */}
+                <div className="border-l-4 border-indigo-500 pl-6">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Setup Steps</h3>
+                  <div className="space-y-6">
+                    <div className="flex items-start">
+                      <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center mr-4 mt-1 text-sm font-bold">1</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-2">Upgrade to Premium Subscription</h4>
+                        <p className="text-gray-700 text-sm">Breeze Intelligence requires a HubSpot premium subscription as the base requirement.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center mr-4 mt-1 text-sm font-bold">2</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-2">Purchase Breeze Intelligence Add-on</h4>
+                        <p className="text-gray-700 text-sm">Add Breeze Intelligence to your premium HubSpot subscription for an additional charge.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center mr-4 mt-1 text-sm font-bold">3</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-2">Opt into Beta Features</h4>
+                        <p className="text-gray-700 text-sm">Navigate to Settings → General → Beta features and enable Breeze Intelligence functionality.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start">
+                      <div className="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center mr-4 mt-1 text-sm font-bold">4</div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-2">Configure Enrichment Settings</h4>
+                        <p className="text-gray-700 text-sm">Set up automatic enrichment rules and data preferences in your HubSpot portal.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Features & Limitations */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <div className="bg-green-50 rounded-2xl p-6 border border-green-200">
+                    <h3 className="font-bold text-green-900 mb-4 flex items-center">
+                      <CheckCircle className="h-5 w-5 mr-2" />
+                      What Breeze Intelligence Provides
+                    </h3>
+                    <div className="space-y-3">
+                      {[
+                        'Company business phone numbers',
+                        'Company size and industry data',
+                        'Company descriptions and details',
+                        'Buyer intent signals',
+                        'Form shortening capabilities',
+                        'Automatic contact enrichment'
+                      ].map((feature, index) => (
+                        <div key={index} className="flex items-center text-sm text-green-800">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-orange-50 rounded-2xl p-6 border border-orange-200">
+                    <h3 className="font-bold text-orange-900 mb-4 flex items-center">
+                      <AlertCircle className="h-5 w-5 mr-2" />
+                      Limitations to Consider
+                    </h3>
+                    <div className="space-y-3">
+                      {[
+                        'Does not provide contact phone numbers',
+                        'Does not provide contact email addresses',
+                        'Limited to HubSpot-approved data sources',
+                        'Additional cost for the add-on feature',
+                        'Beta features may have limitations',
+                        'Less customization vs custom APIs'
+                      ].map((limitation, index) => (
+                        <div key={index} className="flex items-center text-sm text-orange-800">
+                          <div className="w-2 h-2 bg-orange-500 rounded-full mr-3"></div>
+                          {limitation}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comparison with Custom Solutions */}
+                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">When to Choose Breeze Intelligence vs Custom Integration</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h4 className="font-semibold text-indigo-900 mb-3">Choose Breeze Intelligence if:</h4>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li>• You want zero technical setup</li>
+                        <li>• You're satisfied with HubSpot's data sources</li>
+                        <li>• You don't need contact emails/phones</li>
+                        <li>• You prefer native, seamless integration</li>
+                        <li>• Budget allows for the add-on cost</li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-900 mb-3">Choose Custom Integration if:</h4>
+                      <ul className="text-sm text-gray-700 space-y-2">
+                        <li>• You need specific data sources</li>
+                        <li>• You want contact emails and phone numbers</li>
+                        <li>• You need more control over enrichment</li>
+                        <li>• You have technical resources available</li>
+                        <li>• You want to optimize costs</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* External Link */}
+                <div className="text-center p-6 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl border border-indigo-200">
+                  <h3 className="text-lg font-bold text-gray-900 mb-3">Learn More About HubSpot Breeze</h3>
+                  <p className="text-gray-600 mb-4">Get detailed information about Breeze Intelligence and other AI features</p>
+                  <a
+                    href="https://www.hubspot.com/products/artificial-intelligence"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-xl transition-all duration-200"
+                  >
+                    <ExternalLink className="h-4 w-4" />
+                    Visit HubSpot AI Page
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Webhook Implementation */}
           {selectedIntegration === 'webhook' && (
             <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">

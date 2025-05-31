@@ -22,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
     { path: '/api-documentation', label: 'API Docs', icon: Code },
     { path: '/hubspot-integration', label: 'HubSpot Integration', icon: ExternalLink },
     { path: '/tutorial', label: 'HubSpot Tutorial', icon: GraduationCap },
-    { path: '/course', label: 'DEO Academy', icon: BookOpen },
+    { path: '/course', label: 'Development Plan', icon: BookOpen },
   ];
 
   const handleLogout = () => {
